@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b01367e408a28ce4aa4e0c7e9de61194, type: 3}
+  m_Name: Icon Database
+  m_EditorClassIdentifier: 
+  Attack: {fileID: 21300000, guid: dd9c5940752b296428b31c143f2e5bea, type: 3}
+  Magic: {fileID: 21300000, guid: c5923dd669b64b04094c9361fe197799, type: 3}
+  Coin: {fileID: 21300000, guid: 99130266d5a07814e8e1fa2fe1263e5a, type: 3}
+  Wound: {fileID: 21300000, guid: afc441617d371254eaa406e5e5465269, type: 3}
+  Special: {fileID: 21300000, guid: ebde2816b6a18cb4ba7d8100c96dc61f, type: 3}
