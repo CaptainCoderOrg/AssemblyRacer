@@ -27,7 +27,11 @@ public class CardController : MonoBehaviour
         int magic = Card.Magic;
         int coin = Card.Gold;
         int wounds = Card.Wounds;
-        int abilityText = Card.AbilityText.Trim() == string.Empty ? 0 : 1;
+        int abilityText = 0;
+        if (Card.AbilityText is not null && Card.AbilityText.Trim() != string.Empty)
+        {
+            abilityText = 1;
+        }
         foreach(SpriteRenderer icon in _icons)
         {
             if (attack > 0)

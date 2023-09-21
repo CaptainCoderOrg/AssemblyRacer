@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b987ceda2351194aa1f0629d344712b, type: 3}
-  m_Name: Wound
+  m_Name: Gandork
   m_EditorClassIdentifier: 
-  Art: {fileID: 21300000, guid: 58c31326287e6ad438765c14b1f63e55, type: 3}
-  Name: Boo-boo
+  Art: {fileID: 21300000, guid: f0ffc038c74925b42af098df46f7e5d2, type: 3}
+  Name: Gandork
   Attack: 0
-  Gold: 0
-  Magic: 0
-  Cost: 0
+  Gold: 1
+  Magic: 2
+  Cost: 2
   Wounds: 0
   AbilityText: 

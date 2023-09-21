@@ -468,6 +468,7 @@ GameObject:
   - component: {fileID: 5324986554522911579}
   - component: {fileID: 2239140205201966983}
   - component: {fileID: 8196273416065148699}
+  - component: {fileID: 6608199169125503349}
   m_Layer: 0
   m_Name: Deck Card
   m_TagString: Untagged
@@ -569,6 +570,18 @@ MonoBehaviour:
   <Card>k__BackingField: {fileID: 11400000, guid: ccc696d0cbb084f4aaf1e1054874a70c, type: 2}
   <IconDatabase>k__BackingField: {fileID: 11400000, guid: ffedaf308eacd7d40b2ceb5f6211dc95, type: 2}
   ForceUpdate: 0
+--- !u!210 &6608199169125503349
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3520678875390648434}
+  m_Enabled: 1
+  m_SortingLayerID: 1916965489
+  m_SortingLayer: 5
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &4322717008653340835
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,7 +849,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Wound
+  m_text: Boo-boo
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2df900c5936f9cf40ae9a7ed520f817d, type: 2}
   m_sharedMaterial: {fileID: 5363169862331862194, guid: 2df900c5936f9cf40ae9a7ed520f817d, type: 2}

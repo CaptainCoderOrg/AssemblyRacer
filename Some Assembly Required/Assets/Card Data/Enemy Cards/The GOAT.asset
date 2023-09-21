@@ -9,14 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b987ceda2351194aa1f0629d344712b, type: 3}
-  m_Name: Wound
+  m_Script: {fileID: 11500000, guid: e073f5720f2c7b04d8afdf8401b2749a, type: 3}
+  m_Name: The GOAT
   m_EditorClassIdentifier: 
-  Art: {fileID: 21300000, guid: 58c31326287e6ad438765c14b1f63e55, type: 3}
-  Name: Boo-boo
-  Attack: 0
-  Gold: 0
-  Magic: 0
-  Cost: 0
-  Wounds: 0
+  Art: {fileID: 21300000, guid: affae72b85bb7c74d81aba97de4f706c, type: 3}
+  Name: The G.O.A.T.
+  HitPoints: 0
+  MagicPoints: 4
   AbilityText: 

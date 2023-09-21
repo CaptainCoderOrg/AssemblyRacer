@@ -50,3 +50,12 @@ TagManager:
   - name: Card Title
     uniqueID: 1393449165
     locked: 0
+  - name: Board
+    uniqueID: 3710687711
+    locked: 0
+  - name: Card
+    uniqueID: 1916965489
+    locked: 0
+  - name: Moving Card
+    uniqueID: 561407491
+    locked: 0

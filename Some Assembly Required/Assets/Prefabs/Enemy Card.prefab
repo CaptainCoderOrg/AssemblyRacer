@@ -266,6 +266,7 @@ GameObject:
   - component: {fileID: 5324986554522911579}
   - component: {fileID: 2239140205201966983}
   - component: {fileID: 547618836774725595}
+  - component: {fileID: 7031150099193558973}
   m_Layer: 0
   m_Name: Enemy Card
   m_TagString: Untagged
@@ -365,6 +366,18 @@ MonoBehaviour:
   <Card>k__BackingField: {fileID: 11400000, guid: 2acb17174ec99114e9c3e08de7dd525f, type: 2}
   <IconDatabase>k__BackingField: {fileID: 11400000, guid: ffedaf308eacd7d40b2ceb5f6211dc95, type: 2}
   ForceUpdate: 0
+--- !u!210 &7031150099193558973
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3520678875390648434}
+  m_Enabled: 1
+  m_SortingLayerID: 1916965489
+  m_SortingLayer: 5
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &4520162075061863514
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,11 +843,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10
-  m_fontSizeBase: 10
+  m_fontSize: 9
+  m_fontSizeBase: 9
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 9
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2

@@ -266,6 +266,7 @@ GameObject:
   - component: {fileID: 5324986554522911579}
   - component: {fileID: 2239140205201966983}
   - component: {fileID: 1072048849784517780}
+  - component: {fileID: 6964096921293320881}
   m_Layer: 0
   m_Name: Boss Card
   m_TagString: Untagged
@@ -365,6 +366,18 @@ MonoBehaviour:
   <Card>k__BackingField: {fileID: 11400000, guid: 62aaf34da4bcf0744ba135cac6384447, type: 2}
   <IconDatabase>k__BackingField: {fileID: 11400000, guid: ffedaf308eacd7d40b2ceb5f6211dc95, type: 2}
   ForceUpdate: 0
+--- !u!210 &6964096921293320881
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3520678875390648434}
+  m_Enabled: 1
+  m_SortingLayerID: 1916965489
+  m_SortingLayer: 5
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &4520162075061863514
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,8 +15,19 @@ public class MonsterCardController : MonoBehaviour
     private SpriteRenderer _art;
     
 
-    [field: SerializeField]
-    public MonsterCardData Card { get; private set; }
+    [SerializeField]
+    private MonsterCardData _card;
+    
+    public MonsterCardData Card 
+    { 
+        get => _card; 
+        set
+        {
+            _card = value;
+            Render();
+        }
+    }
+    
     [field: SerializeField]
     public IconDatabase IconDatabase { get; private set; }
 
@@ -29,7 +40,6 @@ public class MonsterCardController : MonoBehaviour
         _magicDamage.text = Card.MagicPoints.ToString();
         // TODO: Display hitpoints / magic points
     }
-    
 
     #if UNITY_EDITOR
     public bool ForceUpdate;

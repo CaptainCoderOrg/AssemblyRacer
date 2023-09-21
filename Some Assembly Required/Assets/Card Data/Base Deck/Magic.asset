@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b987ceda2351194aa1f0629d344712b, type: 3}
-  m_Name: Wound
+  m_Name: Magic
   m_EditorClassIdentifier: 
-  Art: {fileID: 21300000, guid: 58c31326287e6ad438765c14b1f63e55, type: 3}
-  Name: Boo-boo
+  Art: {fileID: 21300000, guid: 8cdc62fdd0fbd5d47a60a51b72323e2a, type: 3}
+  Name: Spell
   Attack: 0
   Gold: 0
-  Magic: 0
+  Magic: 1
   Cost: 0
   Wounds: 0
   AbilityText: 
