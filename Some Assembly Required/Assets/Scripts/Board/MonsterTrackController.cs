@@ -31,6 +31,13 @@ public class MonsterTrackController : MonoBehaviour
         PlaceMonster(newMonster,  0);
     }
 
+    public void DefeatMonster(int ix)
+    {
+        if (_monsters[ix] is null) { return; }
+        Destroy(_monsters[ix].gameObject);
+        _monsters[ix] = null;
+    }
+
     public void PlaceMonster(MonsterCardController card, int ix)
     {
         if (ix >= _monsters.Length)
