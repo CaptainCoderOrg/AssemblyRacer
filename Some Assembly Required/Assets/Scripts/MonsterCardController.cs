@@ -38,7 +38,6 @@ public class MonsterCardController : MonoBehaviour
         _art.sprite = Card.Art;
         _attackDamage.text = Card.HitPoints.ToString();
         _magicDamage.text = Card.MagicPoints.ToString();
-        // TODO: Display hitpoints / magic points
     }
 
     #if UNITY_EDITOR
