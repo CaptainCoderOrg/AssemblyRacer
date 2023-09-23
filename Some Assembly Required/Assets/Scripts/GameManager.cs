@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    
+
     [SerializeField]
     private MonsterTrackController _monsterTrack;
     [SerializeField]
@@ -21,12 +22,33 @@ public class GameManager : MonoBehaviour
     private StarterDeckData _starterDeck;
     [field: SerializeField]
     public List<CardData> PlayerDeck { get; private set; }
+    [field: SerializeField]
+    public List<CardData> DiscardPile { get; private set; }
+    [SerializeField]
+    private Transform _discardPileLocation;
 
 
     void Start()
     {
-         InitializeMonsterDeck();
-         InitializePlayerDeck();
+        DiscardPile = new List<CardData>();
+        InitializeMonsterDeck();
+        InitializePlayerDeck();
+    }
+
+    public void StartTurn()
+    {
+        DrawCard();
+        DrawCard();
+        DrawCard();
+        DrawCard();
+        DrawCard();
+        DrawCard();
+        DrawMonster();
+    }
+
+    public void EndTurn()
+    {
+        DiscardPile.AddRange(_handController.DiscardHand(_discardPileLocation).Select(card => card.Card));
     }
 
     private void InitializeMonsterDeck()
@@ -42,7 +64,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        MonsterDeck.Shuffle();       
+        MonsterDeck.Shuffle();
     }
 
     private void InitializePlayerDeck()
@@ -54,15 +76,15 @@ public class GameManager : MonoBehaviour
             {
                 PlayerDeck.Add(entry.Card);
             }
-        }        
-        PlayerDeck.Shuffle();       
+        }
+        PlayerDeck.Shuffle();
     }
 
     // Update is called once per frame
     public void DrawMonster()
     {
-        MonsterCardData drawn = MonsterDeck[MonsterDeck.Count-1];
-        MonsterDeck.RemoveAt(MonsterDeck.Count-1);
+        MonsterCardData drawn = MonsterDeck[MonsterDeck.Count - 1];
+        MonsterDeck.RemoveAt(MonsterDeck.Count - 1);
         MonsterCardController card = _monsterTrack.AddMonster(drawn);
         card.ClickController.OnClick.AddListener(() => SelectMonster(card));
     }
@@ -82,8 +104,8 @@ public class GameManager : MonoBehaviour
 
     public void DrawCard()
     {
-        CardData drawn = PlayerDeck[PlayerDeck.Count-1];
-        PlayerDeck.RemoveAt(PlayerDeck.Count-1);
+        CardData drawn = PlayerDeck[PlayerDeck.Count - 1];
+        PlayerDeck.RemoveAt(PlayerDeck.Count - 1);
         CardController card = _handController.DrawCard(drawn);
     }
 }

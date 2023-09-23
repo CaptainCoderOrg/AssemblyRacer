@@ -471,6 +471,7 @@ GameObject:
   - component: {fileID: 6608199169125503349}
   - component: {fileID: 3057465630668342764}
   - component: {fileID: 4082028817993725536}
+  - component: {fileID: 2363260935917071214}
   m_Layer: 0
   m_Name: Deck Card
   m_TagString: Untagged
@@ -569,7 +570,7 @@ MonoBehaviour:
   - {fileID: 1676711231232329960}
   _title: {fileID: 6332539303615859756}
   _art: {fileID: 2851421207039880006}
-  <Card>k__BackingField: {fileID: 11400000, guid: ccc696d0cbb084f4aaf1e1054874a70c, type: 2}
+  _card: {fileID: 0}
   <IconDatabase>k__BackingField: {fileID: 11400000, guid: ffedaf308eacd7d40b2ceb5f6211dc95, type: 2}
   ForceUpdate: 0
 --- !u!210 &6608199169125503349
@@ -597,7 +598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _growDuration: 0.25
-  _onHoverScale: 1.4
+  _onHoverScale: 1.2
 --- !u!60 &4082028817993725536
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -666,6 +667,21 @@ PolygonCollider2D:
       - {x: 3.26, y: -5.21}
       - {x: 3.3799999, y: -5.15}
   m_UseDelaunayMesh: 0
+--- !u!114 &2363260935917071214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3520678875390648434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7378cc191bcf39549baec105775dfbf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4322717008653340835
 GameObject:
   m_ObjectHideFlags: 0

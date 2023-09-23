@@ -23,6 +23,18 @@ public class HandController : MonoBehaviour
         _cards = new List<CardController>();
     }
 
+    public IEnumerable<CardController> DiscardHand(Transform discardPile)
+    {
+        StopAllCoroutines();
+        foreach (CardController card in _cards)
+        {
+            Quaternion rotation = Quaternion.Euler(0, 0, Random.Range(-15f, 15f));
+            StartCoroutine(AnimateCardMove(card, discardPile.position, rotation));
+            yield return card;
+        }
+        _cards.Clear();
+    }
+
     public CardController DrawCard(CardData data)
     {
         CardController newCard = Instantiate(_template, _cardContainer);
