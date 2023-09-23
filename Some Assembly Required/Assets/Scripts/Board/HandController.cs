@@ -30,6 +30,7 @@ public class HandController : MonoBehaviour
         {
             Quaternion rotation = Quaternion.Euler(0, 0, Random.Range(-15f, 15f));
             StartCoroutine(AnimateCardMove(card, discardPile.position, rotation));
+            card.GetComponent<PolygonCollider2D>().enabled = false;
             yield return card;
         }
         _cards.Clear();
