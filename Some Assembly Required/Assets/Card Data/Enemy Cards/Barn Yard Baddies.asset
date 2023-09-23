@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af93caba8ca7ab488d37340a99c29b6, type: 3}
+  m_Name: Barn Yard Baddies
+  m_EditorClassIdentifier: 
+  Cards:
+  - Card: {fileID: 11400000, guid: 99c64364788dbd642beddb1359859d0b, type: 2}
+    Count: 2
+  - Card: {fileID: 11400000, guid: f4b54f82e8079a14d8d24bf45e4a1b91, type: 2}
+    Count: 2
+  - Card: {fileID: 11400000, guid: 39ef572e40bd5e94a807149c612aa174, type: 2}
+    Count: 2
+  - Card: {fileID: 11400000, guid: 6d68de7ccdd5f9f44987ad6b5e9a1e56, type: 2}
+    Count: 2
+  - Card: {fileID: 11400000, guid: 2acb17174ec99114e9c3e08de7dd525f, type: 2}
+    Count: 2

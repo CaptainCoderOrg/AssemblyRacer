@@ -3622,6 +3622,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5324986554522911579, guid: 0a8f9f9acaad3254595897b464f5f381, type: 3}
   m_PrefabInstance: {fileID: 1037141856}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1166331046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1166331047}
+  - component: {fileID: 1166331048}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1166331047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166331046}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.84704393, y: -0.7354898, z: -9.951671}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1166331048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166331046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c1269f98dd70e46997d2a4475847bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monsterTrack: {fileID: 336568078}
+  <MonsterSets>k__BackingField:
+  - {fileID: 11400000, guid: c638a51a5fcb1c84096600ed2259e0da, type: 2}
+  - {fileID: 11400000, guid: c638a51a5fcb1c84096600ed2259e0da, type: 2}
+  <MonsterDeck>k__BackingField: []
 --- !u!1001 &1178811179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4238,13 +4287,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 336568078}
-        m_TargetAssemblyTypeName: MonsterTrackController, Assembly-CSharp
-        m_MethodName: AddMonster
-        m_Mode: 2
+      - m_Target: {fileID: 1166331048}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: DrawMonster
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 39ef572e40bd5e94a807149c612aa174, type: 2}
-          m_ObjectArgumentAssemblyTypeName: MonsterCardData, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5536,3 +5585,4 @@ SceneRoots:
   - {fileID: 604702411}
   - {fileID: 2025137850}
   - {fileID: 2008683360}
+  - {fileID: 1166331047}
