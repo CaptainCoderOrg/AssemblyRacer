@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -16,8 +15,21 @@ public class GameManager : MonoBehaviour
     public List<MonsterCardData> MonsterDeck { get; private set; }
     [field: SerializeField]
     public MonsterCardController SelectedMonster { get; private set; }
+    [SerializeField]
+    private HandController _handController;
+    [SerializeField]
+    private StarterDeckData _starterDeck;
+    [field: SerializeField]
+    public List<CardData> PlayerDeck { get; private set; }
+
 
     void Start()
+    {
+         InitializeMonsterDeck();
+         InitializePlayerDeck();
+    }
+
+    private void InitializeMonsterDeck()
     {
         MonsterDeck = new List<MonsterCardData>();
         foreach (MonsterSetData set in MonsterSets)
@@ -30,7 +42,20 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        MonsterDeck.Shuffle();        
+        MonsterDeck.Shuffle();       
+    }
+
+    private void InitializePlayerDeck()
+    {
+        PlayerDeck = new List<CardData>();
+        foreach (StarterDeckData.Entry entry in _starterDeck.Cards)
+        {
+            for (int i = 0; i < entry.Count; i++)
+            {
+                PlayerDeck.Add(entry.Card);
+            }
+        }        
+        PlayerDeck.Shuffle();       
     }
 
     // Update is called once per frame
@@ -53,5 +78,12 @@ public class GameManager : MonoBehaviour
     {
         SelectedMonster = null;
         _monsterDialog.gameObject.SetActive(false);
+    }
+
+    public void DrawCard()
+    {
+        CardData drawn = PlayerDeck[PlayerDeck.Count-1];
+        PlayerDeck.RemoveAt(PlayerDeck.Count-1);
+        CardController card = _handController.DrawCard(drawn);
     }
 }

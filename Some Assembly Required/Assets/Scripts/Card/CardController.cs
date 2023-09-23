@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(CardClickController))]
 public class CardController : MonoBehaviour
 {
     [SerializeField]
@@ -11,12 +12,25 @@ public class CardController : MonoBehaviour
     private TextMeshPro _title;
     [SerializeField]
     private SpriteRenderer _art;
-    
-
     [field: SerializeField]
-    public CardData Card { get; private set; }
+    private CardData _card;
+    public CardData Card { 
+        get => _card; 
+        set
+        {
+            _card = value;
+            Render();
+        } 
+    }
     [field: SerializeField]
     public IconDatabase IconDatabase { get; private set; }
+
+    public CardClickController ClickController { get; private set; }
+
+    private void Awake()
+    {
+        ClickController = GetComponent<CardClickController>();
+    }
 
     public void Render()
     {
