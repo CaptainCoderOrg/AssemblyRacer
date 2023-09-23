@@ -83,11 +83,12 @@ public class PlayerDeckManager : MonoBehaviour
         foreach (CardController card in _handController.Discarded)
         {
             CardData data = card.Card;
+            PlayerDeck.Add(data);
+            int count = PlayerDeck.Count;
             StartCoroutine(_handController.AnimateShuffle(card, delay++, () =>
             {
-                PlayerDeck.Add(data);
-                OnDeckSizeChange.Invoke(PlayerDeck.Count);
-                OnDeckSizeChangeString.Invoke(PlayerDeck.Count.ToString());
+                OnDeckSizeChange.Invoke(count);
+                OnDeckSizeChangeString.Invoke(count.ToString());
             }));
         }
         _handController.Discarded.Clear();
