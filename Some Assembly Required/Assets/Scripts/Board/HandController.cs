@@ -5,6 +5,8 @@ using UnityEngine;
 public class HandController : MonoBehaviour
 {
     [SerializeField]
+    private float _animationDuration = 0.15f;
+    [SerializeField]
     private AnimationCurve _cardHeightCurve;
     [SerializeField]
     private CardController _template;
@@ -36,24 +38,43 @@ public class HandController : MonoBehaviour
 
     private void PlaceAllCards()
     {
+        StopAllCoroutines();
         float handSize = Mathf.Max(6, _cards.Count);
         float space = _rightPivot.position.x - _leftPivot.position.x;
-        float increment = space / handSize;
+        float increment = space / (handSize - 1);
         // -10 => 10
         float maxY = 1;
-        float startRotation = 25f;
-        float rotationIncrement = -50f / handSize;
+        float startRotation = 15f;
+        float rotationIncrement = -30f / (handSize - 1);
         for (int ix = 0; ix < _cards.Count; ix++)
         {
             CardController card = _cards[ix];
             Vector2 position = _leftPivot.position;
             position.x += increment * ix;
-            float percent = ix/ handSize;
+            float percent = ix/ (handSize - 1);
             float heightCurve = _cardHeightCurve.Evaluate(percent);
             position.y += maxY * heightCurve;
-            card.transform.position = position;
-            card.transform.rotation = Quaternion.Euler(0, 0, startRotation + rotationIncrement * ix);
+            
+            Quaternion rotation = Quaternion.Euler(0, 0, startRotation + rotationIncrement * ix);
+            StartCoroutine(AnimateCardMove(card, position, rotation));
         }
+    }
+
+    private IEnumerator AnimateCardMove(CardController card, Vector2 endPosition, Quaternion endRotation)
+    {
+        float startTime = Time.time;
+        float endTime = startTime + _animationDuration;
+        Vector2 startPosition = card.transform.position;
+        Quaternion startRotation = card.transform.rotation;
+        while (Time.time < endTime)
+        {
+            float percent = Mathf.Clamp01((Time.time - startTime) / _animationDuration);
+            card.transform.position = Vector2.Lerp(startPosition, endPosition, percent);
+            card.transform.rotation = Quaternion.Lerp(startRotation, endRotation, percent);
+            yield return new WaitForEndOfFrame();
+        }
+        card.transform.position = endPosition;
+        card.transform.rotation = endRotation;
     }
 
     
