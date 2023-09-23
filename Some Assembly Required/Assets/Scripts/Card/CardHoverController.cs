@@ -6,21 +6,19 @@ using UnityEngine.Rendering;
 
 public class CardHoverController : MonoBehaviour
 {
-    // [SerializeField]
-    // public SortingLayer _onHoverLayer;
     [SerializeField]
     private float _growDuration = .25f;
     [SerializeField]
     private float _onHoverScale = 1.4f;
     private Vector3 _initialScale;
     private Coroutine _growing = null;
-    private int _initialSortingLayer;
+    private int _intialSortingOrder;
     private SortingGroup _sortingGroup;
     private void Awake()
     {
         _initialScale = transform.localScale;
         _sortingGroup = GetComponent<SortingGroup>();
-        _initialSortingLayer = _sortingGroup.sortingLayerID;
+        _intialSortingOrder = _sortingGroup.sortingOrder;
     }
     private void OnMouseOver()
     {   
@@ -43,7 +41,7 @@ public class CardHoverController : MonoBehaviour
         }
         
         transform.localScale = _initialScale;
-        _sortingGroup.sortingLayerID = _initialSortingLayer;
+        _sortingGroup.sortingOrder = 0;
     }
 
     private void TryAnimate()
@@ -54,7 +52,7 @@ public class CardHoverController : MonoBehaviour
 
     private IEnumerator Animate()
     {
-        // _sortingGroup.sortingLayerID = _onHoverLayer.id;
+        _sortingGroup.sortingOrder = 1000;
         Vector3 targetScale = _initialScale * _onHoverScale;
         float startTime = Time.time;
         float endTime = Time.time + _growDuration;

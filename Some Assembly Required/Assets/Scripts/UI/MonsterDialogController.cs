@@ -45,7 +45,10 @@ public class MonsterDialogController : MonoBehaviour
 
     private void OnValidate()
     {
-        _forceValidate = false;
+        if (_forceValidate)
+        {
+            _forceValidate = false;
+        }        
         if (_card is null) { return; }
         Render();
     }
