@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,7 +19,7 @@ public class PlayerDeckManager : MonoBehaviour
     public List<CardData> DiscardPile { get; private set; }
     [SerializeField]
     private Transform _discardPileLocation;
-    
+
 
 
     void Start()
@@ -33,8 +34,7 @@ public class PlayerDeckManager : MonoBehaviour
     {
         for (int ix = 0; ix < count; ix++)
         {
-            DrawCard();
-            yield return new WaitForSeconds(0.15f);
+            yield return DrawCard();
         }
     }
 
@@ -57,12 +57,47 @@ public class PlayerDeckManager : MonoBehaviour
         OnDeckSizeChange.Invoke(PlayerDeck.Count);
         OnDeckSizeChangeString.Invoke(PlayerDeck.Count.ToString());
     }
-    public void DrawCard()
+    public IEnumerator DrawCard()
     {
+        if (PlayerDeck.Count == 0)
+        {
+            float delay = ShuffleDiscard();
+            StartCoroutine(DelayDraw(delay));
+            yield return new WaitForSeconds(delay);
+        }
+        // TODO: Display empty deck message?
+        if (PlayerDeck.Count == 0) { yield return new WaitForSeconds(0.15f); }
         CardData drawn = PlayerDeck[PlayerDeck.Count - 1];
         PlayerDeck.RemoveAt(PlayerDeck.Count - 1);
         OnDeckSizeChange.Invoke(PlayerDeck.Count);
         OnDeckSizeChangeString.Invoke(PlayerDeck.Count.ToString());
         CardController card = _handController.DrawCard(drawn);
+        yield return new WaitForSeconds(0.15f);
+    }
+
+    public float ShuffleDiscard()
+    {
+        DiscardPile.Clear();
+        int delay = 0;
+
+        foreach (CardController card in _handController.Discarded)
+        {
+            CardData data = card.Card;
+            StartCoroutine(_handController.AnimateShuffle(card, delay++, () =>
+            {
+                PlayerDeck.Add(data);
+                OnDeckSizeChange.Invoke(PlayerDeck.Count);
+                OnDeckSizeChangeString.Invoke(PlayerDeck.Count.ToString());
+            }));
+        }
+        _handController.Discarded.Clear();
+        return delay * _handController.AnimationDuration  + 0.25f;
+    }
+
+    private IEnumerator DelayDraw(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        PlayerDeck.Shuffle();
+        DrawCard();
     }
 }

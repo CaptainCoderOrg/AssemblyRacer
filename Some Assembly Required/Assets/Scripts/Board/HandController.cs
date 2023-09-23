@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HandController : MonoBehaviour
 {
-    [SerializeField]
-    private float _animationDuration = 0.15f;
+    [field: SerializeField]
+    public float AnimationDuration {get; private set; } = 0.15f;
     [SerializeField]
     private AnimationCurve _cardHeightCurve;
     [SerializeField]
@@ -16,10 +16,13 @@ public class HandController : MonoBehaviour
     private Transform _rightPivot;
     [SerializeField]
     private Transform _cardContainer;
+    [field: SerializeField]
+    public List<CardController> Discarded { get; private set; }
     private List<CardController> _cards;
 
     private void Awake()
     {
+        Discarded = new List<CardController>();
         _cards = new List<CardController>();
     }
 
@@ -28,6 +31,7 @@ public class HandController : MonoBehaviour
         StopAllCoroutines();
         foreach (CardController card in _cards)
         {
+            Discarded.Add(card);
             Quaternion rotation = Quaternion.Euler(0, 0, Random.Range(-15f, 15f));
             StartCoroutine(AnimateCardMove(card, discardPile.position, rotation));
             card.GetComponent<PolygonCollider2D>().enabled = false;
@@ -42,8 +46,6 @@ public class HandController : MonoBehaviour
         newCard.Card = data;
         newCard.name = data.Name;
         newCard.gameObject.SetActive(true);
-        // float rotation = Random.Range(-7f, 7f);
-        // newCard.transform.rotation = Quaternion.Euler(0, 0, rotation);
         _cards.Add(newCard);
         PlaceAllCards();
         return newCard;
@@ -73,15 +75,35 @@ public class HandController : MonoBehaviour
         }
     }
 
+    public IEnumerator AnimateShuffle(CardController card, int delay, System.Action onFinished)
+    {
+        
+        yield return new WaitForSeconds(delay * AnimationDuration);
+        float startTime = Time.time;
+        float duration = AnimationDuration;
+        float endTime = startTime + duration;
+        Vector2 startPosition = card.transform.position;
+        Vector2 endPosition = _template.transform.position;
+        while (Time.time < endTime)
+        {
+            float percent = Mathf.Clamp01((Time.time - startTime) / duration);
+            card.transform.position = Vector2.Lerp(startPosition, endPosition, percent);
+            yield return new WaitForEndOfFrame();
+        }
+        card.transform.position = endPosition;
+        onFinished.Invoke();
+        Destroy(card.gameObject);
+    }
+
     private IEnumerator AnimateCardMove(CardController card, Vector2 endPosition, Quaternion endRotation)
     {
         float startTime = Time.time;
-        float endTime = startTime + _animationDuration;
+        float endTime = startTime + AnimationDuration;
         Vector2 startPosition = card.transform.position;
         Quaternion startRotation = card.transform.rotation;
         while (Time.time < endTime)
         {
-            float percent = Mathf.Clamp01((Time.time - startTime) / _animationDuration);
+            float percent = Mathf.Clamp01((Time.time - startTime) / AnimationDuration);
             card.transform.position = Vector2.Lerp(startPosition, endPosition, percent);
             card.transform.rotation = Quaternion.Lerp(startRotation, endRotation, percent);
             yield return new WaitForEndOfFrame();

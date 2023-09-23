@@ -6245,7 +6245,7 @@ Transform:
   m_GameObject: {fileID: 1573983605}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.61, y: -3.8, z: 0}
+  m_LocalPosition: {x: -5.58, y: -3.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6270,7 +6270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5a638b739a049448ea0e4e377e4ed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animationDuration: 0.15
+  <AnimationDuration>k__BackingField: 0.15
   _cardHeightCurve:
     serializedVersion: 2
     m_Curve:
@@ -6308,6 +6308,7 @@ MonoBehaviour:
   _leftPivot: {fileID: 5324986552682231784}
   _rightPivot: {fileID: 5324986554663035571}
   _cardContainer: {fileID: 1922147583}
+  <Discarded>k__BackingField: []
 --- !u!1 &1589118043
 GameObject:
   m_ObjectHideFlags: 0
@@ -8379,7 +8380,7 @@ Transform:
   m_GameObject: {fileID: 3520678876336509071}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.32, y: 0.53, z: 0}
+  m_LocalPosition: {x: 13.13, y: 0.53, z: 0}
   m_LocalScale: {x: 0.207, y: 0.207, z: 0.207}
   m_ConstrainProportionsScale: 1
   m_Children: []
