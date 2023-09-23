@@ -20,7 +20,7 @@ public class MonsterTrackController : MonoBehaviour
         _monsters = new MonsterCardController[5];
     }
 
-    public void AddMonster(MonsterCardData toAdd)
+    public MonsterCardController AddMonster(MonsterCardData toAdd)
     {
         MonsterCardController newMonster = Instantiate(_template, _monstersContainer);
         newMonster.Card = toAdd;
@@ -29,6 +29,7 @@ public class MonsterTrackController : MonoBehaviour
         float rotation = Random.Range(-7f, 7f);
         newMonster.transform.rotation = Quaternion.Euler(0, 0, rotation);
         PlaceMonster(newMonster,  0);
+        return newMonster;
     }
 
     public void DefeatMonster(int ix)

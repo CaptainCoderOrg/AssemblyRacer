@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Tuna
   m_EditorClassIdentifier: 
   Art: {fileID: 21300000, guid: 2b40e214ce42b584798265609a781ea0, type: 3}
+  UIArt: {fileID: 21300000, guid: de7bdf630e6b40347a0f9c728b58c8c1, type: 3}
   Name: Tuna
   HitPoints: 2
   MagicPoints: 0
   AbilityText: 
+  FlavorText: The pirate chicken of the sea.

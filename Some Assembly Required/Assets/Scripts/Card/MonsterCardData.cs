@@ -6,10 +6,13 @@ using UnityEngine;
 public class MonsterCardData : ScriptableObject
 {
     public Sprite Art;
+    public Sprite UIArt;
     public string Name;
     public int HitPoints;
     public int MagicPoints;
     [TextArea]
     public string AbilityText;
+    [TextArea]
+    public string FlavorText;
 
 }

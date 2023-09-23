@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: The GOAT
   m_EditorClassIdentifier: 
   Art: {fileID: 21300000, guid: affae72b85bb7c74d81aba97de4f706c, type: 3}
+  UIArt: {fileID: 21300000, guid: bad5f48eeb5c74f4483b616a6ba86223, type: 3}
   Name: The G.O.A.T.
   HitPoints: 0
   MagicPoints: 4
   AbilityText: 
+  FlavorText: He's one baaaaaad goat.

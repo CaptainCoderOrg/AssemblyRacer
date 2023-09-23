@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 
 public class CardHoverController : MonoBehaviour
@@ -23,6 +24,7 @@ public class CardHoverController : MonoBehaviour
     }
     private void OnMouseOver()
     {   
+        if (EventSystem.current.IsPointerOverGameObject()) { return; }
         TryAnimate();
         
     }
@@ -59,9 +61,7 @@ public class CardHoverController : MonoBehaviour
         while (Time.time < endTime)
         {
             float timeElapsed = Time.time - startTime;
-            Debug.Log(timeElapsed);
             float percent = Mathf.Clamp01(timeElapsed / _growDuration);
-            Debug.Log(percent);
             transform.localScale = Vector3.Lerp(_initialScale, targetScale, percent);
             yield return new WaitForEndOfFrame();
         }

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Byarn Cat
   m_EditorClassIdentifier: 
   Art: {fileID: 21300000, guid: 4cdbccf6072df2b42965ffedd6f16de2, type: 3}
+  UIArt: {fileID: 21300000, guid: 86198a41d3835004692722918c6d2d8e, type: 3}
   Name: Byarn Cat
   HitPoints: 0
   MagicPoints: 0
-  AbilityText: 'On Defeat: Gain a Wound!'
+  AbilityText: 'On Defeat: Gain a Boo-Boo!'
+  FlavorText: Too cute to hurt!

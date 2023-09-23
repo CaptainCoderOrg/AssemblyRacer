@@ -469,6 +469,8 @@ GameObject:
   - component: {fileID: 2239140205201966983}
   - component: {fileID: 8196273416065148699}
   - component: {fileID: 6608199169125503349}
+  - component: {fileID: 3057465630668342764}
+  - component: {fileID: 4082028817993725536}
   m_Layer: 0
   m_Name: Deck Card
   m_TagString: Untagged
@@ -582,6 +584,88 @@ SortingGroup:
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!114 &3057465630668342764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3520678875390648434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b4df9cb5cdbee84286823e3d54f7acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _growDuration: 0.25
+  _onHoverScale: 1.4
+--- !u!60 &4082028817993725536
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3520678875390648434}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 7.5, y: 10.5}
+    newSize: {x: 7.5, y: 10.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 3.61, y: -4.95}
+      - {x: 3.72, y: -4.7}
+      - {x: 3.75, y: -4.61}
+      - {x: 3.75, y: 4.65}
+      - {x: 3.6499999, y: 4.87}
+      - {x: 3.54, y: 5.0099998}
+      - {x: 3.32, y: 5.18}
+      - {x: 3.1499999, y: 5.25}
+      - {x: -3.1499999, y: 5.25}
+      - {x: -3.37, y: 5.15}
+      - {x: -3.51, y: 5.0299997}
+      - {x: -3.6299999, y: 4.9}
+      - {x: -3.73, y: 4.71}
+      - {x: -3.75, y: 4.61}
+      - {x: -3.75, y: -4.6}
+      - {x: -3.7099998, y: -4.7599998}
+      - {x: -3.6, y: -4.94}
+      - {x: -3.3999999, y: -5.13}
+      - {x: -3.25, y: -5.21}
+      - {x: -3.11, y: -5.25}
+      - {x: 3.12, y: -5.25}
+      - {x: 3.26, y: -5.21}
+      - {x: 3.3799999, y: -5.15}
+  m_UseDelaunayMesh: 0
 --- !u!1 &4322717008653340835
 GameObject:
   m_ObjectHideFlags: 0

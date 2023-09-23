@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     [SerializeField]
     private MonsterTrackController _monsterTrack;
-
+    [SerializeField]
+    private MonsterDialogController _monsterDialog;
     [field: SerializeField]
     public List<MonsterSetData> MonsterSets { get; private set; }
-
     [field: SerializeField]
     public List<MonsterCardData> MonsterDeck { get; private set; }
+    [field: SerializeField]
+    public MonsterCardController SelectedMonster { get; private set; }
 
     void Start()
     {
@@ -35,6 +38,20 @@ public class GameManager : MonoBehaviour
     {
         MonsterCardData drawn = MonsterDeck[MonsterDeck.Count-1];
         MonsterDeck.RemoveAt(MonsterDeck.Count-1);
-        _monsterTrack.AddMonster(drawn);
+        MonsterCardController card = _monsterTrack.AddMonster(drawn);
+        card.ClickController.OnClick.AddListener(() => SelectMonster(card));
+    }
+
+    public void SelectMonster(MonsterCardController monsterCard)
+    {
+        SelectedMonster = monsterCard;
+        _monsterDialog.Card = monsterCard.Card;
+        _monsterDialog.gameObject.SetActive(true);
+    }
+
+    public void DeselectMonster()
+    {
+        SelectedMonster = null;
+        _monsterDialog.gameObject.SetActive(false);
     }
 }

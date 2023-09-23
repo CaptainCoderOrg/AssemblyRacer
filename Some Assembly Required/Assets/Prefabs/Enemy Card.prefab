@@ -265,10 +265,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5324986554522911579}
   - component: {fileID: 2239140205201966983}
+  - component: {fileID: 2363260935917071214}
+  - component: {fileID: 7940797571509681251}
   - component: {fileID: 547618836774725595}
   - component: {fileID: 7031150099193558973}
   - component: {fileID: 2137339163529833784}
-  - component: {fileID: 7940797571509681251}
   m_Layer: 0
   m_Name: Enemy Card
   m_TagString: Untagged
@@ -349,6 +350,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2363260935917071214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3520678875390648434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7378cc191bcf39549baec105775dfbf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7940797571509681251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3520678875390648434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b4df9cb5cdbee84286823e3d54f7acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _growDuration: 0.25
+  _onHoverScale: 1.25
 --- !u!114 &547618836774725595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,20 +472,6 @@ PolygonCollider2D:
       - {x: 3.37, y: -5.18}
       - {x: 3.6799998, y: -4.8599997}
   m_UseDelaunayMesh: 0
---- !u!114 &7940797571509681251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3520678875390648434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b4df9cb5cdbee84286823e3d54f7acc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _growDuration: 0.25
-  _onHoverScale: 1.25
 --- !u!1 &4520162075061863514
 GameObject:
   m_ObjectHideFlags: 0

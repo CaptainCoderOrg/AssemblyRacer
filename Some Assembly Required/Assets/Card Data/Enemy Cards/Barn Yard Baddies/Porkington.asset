@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Porkington
   m_EditorClassIdentifier: 
   Art: {fileID: 21300000, guid: a32071f14397c15449f74638cfdfa876, type: 3}
+  UIArt: {fileID: 21300000, guid: 63ceb4c2314791b44962d95832fbe3ed, type: 3}
   Name: Porkington
   HitPoints: 1
   MagicPoints: 1
   AbilityText: 
+  FlavorText: When pigs fly, you die!
