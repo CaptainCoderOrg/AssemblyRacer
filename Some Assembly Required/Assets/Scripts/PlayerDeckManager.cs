@@ -34,7 +34,7 @@ public class PlayerDeckManager : MonoBehaviour
     {
         for (int ix = 0; ix < count; ix++)
         {
-            yield return DrawCard();
+            yield return new WaitForSeconds(DrawCard());
         }
     }
 
@@ -57,22 +57,22 @@ public class PlayerDeckManager : MonoBehaviour
         OnDeckSizeChange.Invoke(PlayerDeck.Count);
         OnDeckSizeChangeString.Invoke(PlayerDeck.Count.ToString());
     }
-    public IEnumerator DrawCard()
+    public float DrawCard()
     {
         if (PlayerDeck.Count == 0)
         {
             float delay = ShuffleDiscard();
             StartCoroutine(DelayDraw(delay));
-            yield return new WaitForSeconds(delay);
+            return delay;
         }
         // TODO: Display empty deck message?
-        if (PlayerDeck.Count == 0) { yield return new WaitForSeconds(0.15f); }
+        if (PlayerDeck.Count == 0) { return 0.15f; }
         CardData drawn = PlayerDeck[PlayerDeck.Count - 1];
         PlayerDeck.RemoveAt(PlayerDeck.Count - 1);
         OnDeckSizeChange.Invoke(PlayerDeck.Count);
         OnDeckSizeChangeString.Invoke(PlayerDeck.Count.ToString());
         CardController card = _handController.DrawCard(drawn);
-        yield return new WaitForSeconds(0.15f);
+        return 0.15f;
     }
 
     public float ShuffleDiscard()
