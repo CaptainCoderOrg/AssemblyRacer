@@ -57,6 +57,8 @@ public class GameManager : MonoBehaviour
         _playerDeckManager.DiscardHand(() => {});
     }
 
+    public void DrawMonster() => DrawMonster(() => {});
+
     public void DrawMonster(System.Action onAnimationFinished)
     {
         MonsterCardData drawn = _monsterDeckManager.DrawMonster();
