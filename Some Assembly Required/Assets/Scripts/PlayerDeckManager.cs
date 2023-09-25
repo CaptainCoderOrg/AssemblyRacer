@@ -20,8 +20,6 @@ public class PlayerDeckManager : MonoBehaviour
     [SerializeField]
     private Transform _discardPileLocation;
 
-
-
     void Start()
     {
         DiscardPile = new List<CardData>();
@@ -36,6 +34,12 @@ public class PlayerDeckManager : MonoBehaviour
         {
             yield return new WaitForSeconds(DrawCard());
         }
+    }
+
+    public void AddCardToDiscard(CardController toAdd)
+    {
+        DiscardPile.Add(toAdd.Card);
+        _handController.Discarded.Add(toAdd);
     }
 
     public void DiscardHand()

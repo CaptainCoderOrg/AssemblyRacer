@@ -1,15 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Rendering;
 
 public class MonsterTrackController : MonoBehaviour
 {
+    public UnityEvent<MonsterCardController> OnMonsterAttack;
+    public UnityEvent<(MonsterCardController, CardController)> OnMonsterAttackFinished;
     [SerializeField]
     private float _cardSlideTime = 1f;
     [SerializeField]
     private Transform[] _slotPositions;
     [SerializeField]
     private MonsterCardController _template;
+    [SerializeField]
+    private CardController _booBooTemplate;
+    [SerializeField]
+    private Transform _discardPileTransform;
+    [SerializeField]
+    private Transform _monsterFinalPosition;
     [SerializeField]
     private MonsterCardController[] _monsters;
     [SerializeField]
@@ -46,7 +56,7 @@ public class MonsterTrackController : MonoBehaviour
             MonsterAttacks(card);
             return;
         }
-        StartCoroutine(SlideCardTo(card, _slotPositions[ix]));
+        StartCoroutine(SlideCardTo(card.gameObject, _slotPositions[ix]));
         if (_monsters[ix] is not null)
         {
             MonsterCardController bumped = _monsters[ix];
@@ -57,13 +67,41 @@ public class MonsterTrackController : MonoBehaviour
 
     public void MonsterAttacks(MonsterCardController card)
     {
-        Destroy(card.gameObject);
+        // TODO: And then animation monad would be great here.
+        StartCoroutine(SlideCardTo(card.gameObject, _booBooTemplate.transform, _cardSlideTime, () => {
+            GameObject grouped = new GameObject("Monster and Wound");
+            grouped.transform.position = card.transform.position;
+            card.transform.parent = grouped.transform;
+            card.SortingGroup.sortingLayerName = "Moving Card";
+
+            CardController woundCard = Instantiate(_booBooTemplate, this.transform);
+            woundCard.transform.parent = grouped.transform;
+            woundCard.transform.localPosition = new Vector2(.2f, -.2f);
+            woundCard.gameObject.SetActive(true);
+            woundCard.SortingGroup.sortingLayerName = "Moving Card";
+            woundCard.SortingGroup.sortingOrder = 1;
+            
+            OnMonsterAttack.Invoke(card);
+
+            StartCoroutine(SlideCardTo(grouped, _discardPileTransform, .5f, () => {
+                woundCard.transform.localPosition = Vector2.zero;
+                woundCard.SortingGroup.sortingLayerName = "Card";
+                woundCard.SortingGroup.sortingOrder = 0;
+                StartCoroutine(SlideCardTo(card.gameObject, _monsterFinalPosition, .5f, () => {
+                    OnMonsterAttackFinished.Invoke((card, woundCard));
+                    Destroy(card.gameObject);
+                    woundCard.transform.parent = null;
+                    Destroy(grouped.gameObject);
+                }));
+            }));
+        }));
     }
 
-    public IEnumerator SlideCardTo(MonsterCardController toMove, Transform target)
+    public IEnumerator SlideCardTo(GameObject toMove, Transform target, float? duration = null, System.Action OnComplete = null)
     {
+        float slideTime = duration ?? _cardSlideTime;
         float startTime = Time.time;
-        float endTime = Time.time + _cardSlideTime;
+        float endTime = Time.time + slideTime;
         Vector2 startPosition = toMove.transform.position;
         Vector2 endPosition = target.position;
         float randomY = Random.Range(-.1f, .1f);
@@ -75,11 +113,12 @@ public class MonsterTrackController : MonoBehaviour
         while (Time.time < endTime)
         {
             float timePassed = Time.time - startTime;
-            float percent = Mathf.Clamp01(timePassed/_cardSlideTime);
+            float percent = Mathf.Clamp01(timePassed/slideTime);
             toMove.transform.rotation = Quaternion.Lerp(startRotation, endRotation, percent);
             toMove.transform.position = Vector2.Lerp(startPosition, endPosition, percent);
             yield return new WaitForEndOfFrame();
         }
         toMove.transform.position = endPosition;
+        OnComplete?.Invoke();
     }
 }

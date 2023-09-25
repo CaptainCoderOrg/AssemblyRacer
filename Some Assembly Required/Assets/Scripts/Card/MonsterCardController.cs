@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
-[RequireComponent(typeof(CardHoverController), typeof(CardClickController))]
+[RequireComponent(typeof(CardHoverController), typeof(CardClickController), typeof(SortingGroup))]
 public class MonsterCardController : MonoBehaviour
 {
     
@@ -28,6 +29,7 @@ public class MonsterCardController : MonoBehaviour
         }
     }
     public CardClickController ClickController { get; private set; }
+    public SortingGroup  SortingGroup { get; private set; }
     
     [field: SerializeField]
     public IconDatabase IconDatabase { get; private set; }
@@ -35,6 +37,7 @@ public class MonsterCardController : MonoBehaviour
     private void Awake()
     {
         ClickController = GetComponent<CardClickController>();
+        SortingGroup = GetComponent<SortingGroup>();
     }
 
     public void Render()

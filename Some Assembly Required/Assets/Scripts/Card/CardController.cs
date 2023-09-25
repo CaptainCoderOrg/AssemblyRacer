@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 
-[RequireComponent(typeof(CardClickController))]
+[RequireComponent(typeof(CardClickController), typeof(SortingGroup))]
 public class CardController : MonoBehaviour
 {
     [SerializeField]
@@ -24,12 +25,14 @@ public class CardController : MonoBehaviour
     }
     [field: SerializeField]
     public IconDatabase IconDatabase { get; private set; }
+    public SortingGroup SortingGroup { get; private set; }
 
     public CardClickController ClickController { get; private set; }
 
     private void Awake()
     {
         ClickController = GetComponent<CardClickController>();
+        SortingGroup = GetComponent<SortingGroup>();
     }
 
     public void Render()

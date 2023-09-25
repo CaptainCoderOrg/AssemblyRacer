@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(PlayerDeckManager), typeof(MonsterDeckManager))]
 public class GameManager : MonoBehaviour
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     public MonsterCardController SelectedMonster { get; private set; }
     private PlayerDeckManager _playerDeckManager;
     private MonsterDeckManager _monsterDeckManager;
+    public UnityEvent<string> OnWoundsChangedString;
+    private int _wounds = 10;
 
     void Awake()
     {
@@ -22,11 +25,30 @@ public class GameManager : MonoBehaviour
         _monsterDeckManager = GetComponent<MonsterDeckManager>();
     }
 
+    void Start()
+    {
+        _monsterTrack.OnMonsterAttack.AddListener(HandleMonsterAttack);
+        _monsterTrack.OnMonsterAttackFinished.AddListener(HandleMonsterAttackFinished);
+    }
+
+    private void HandleMonsterAttack(MonsterCardController attacker)
+    {
+        _wounds--;
+        OnWoundsChangedString.Invoke(_wounds.ToString());
+    }
+
+    private void HandleMonsterAttackFinished((MonsterCardController attacker, CardController wound) evt)
+    {
+        _playerDeckManager.AddCardToDiscard(evt.wound);
+        // TODO: If wounds are 0, end the game.
+    }
+
 
     public void StartTurn()
     {
-        _playerDeckManager.StartTurn();
         DrawMonster();
+        _playerDeckManager.StartTurn();
+        
     }
 
     public void EndTurn()
