@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Rendering;
 
 public class MonsterTrackController : MonoBehaviour
 {
@@ -30,7 +29,7 @@ public class MonsterTrackController : MonoBehaviour
         _monsters = new MonsterCardController[5];
     }
 
-    public MonsterCardController AddMonster(MonsterCardData toAdd)
+    public MonsterCardController AddMonster(MonsterCardData toAdd, System.Action onAnimationFinished)
     {
         MonsterCardController newMonster = Instantiate(_template, _monstersContainer);
         newMonster.Card = toAdd;
@@ -38,7 +37,7 @@ public class MonsterTrackController : MonoBehaviour
         newMonster.gameObject.SetActive(true);
         float rotation = Random.Range(-7f, 7f);
         newMonster.transform.rotation = Quaternion.Euler(0, 0, rotation);
-        PlaceMonster(newMonster,  0);
+        PlaceMonster(newMonster,  0, onAnimationFinished);
         return newMonster;
     }
 
@@ -49,23 +48,25 @@ public class MonsterTrackController : MonoBehaviour
         _monsters[ix] = null;
     }
 
-    public void PlaceMonster(MonsterCardController card, int ix)
+    public void PlaceMonster(MonsterCardController card, int ix, System.Action onAnimationFinished)
     {
         if (ix >= _monsters.Length)
         {
-            MonsterAttacks(card);
+            MonsterAttacks(card, onAnimationFinished);
             return;
         }
-        StartCoroutine(SlideCardTo(card.gameObject, _slotPositions[ix]));
         if (_monsters[ix] is not null)
         {
             MonsterCardController bumped = _monsters[ix];
-            PlaceMonster(bumped, ix + 1);
+            PlaceMonster(bumped, ix + 1, onAnimationFinished);
+            onAnimationFinished = null;
         }
         _monsters[ix] = card;
+        StartCoroutine(SlideCardTo(card.gameObject, _slotPositions[ix], _cardSlideTime, onAnimationFinished));
+        
     }
 
-    public void MonsterAttacks(MonsterCardController card)
+    public void MonsterAttacks(MonsterCardController card, System.Action onAnimationFinished)
     {
         // TODO: And then animation monad would be great here.
         StartCoroutine(SlideCardTo(card.gameObject, _booBooTemplate.transform, _cardSlideTime, () => {
@@ -92,6 +93,7 @@ public class MonsterTrackController : MonoBehaviour
                     Destroy(card.gameObject);
                     woundCard.transform.parent = null;
                     Destroy(grouped.gameObject);
+                    onAnimationFinished.Invoke();
                 }));
             }));
         }));

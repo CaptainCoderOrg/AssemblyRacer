@@ -46,9 +46,10 @@ public class GameManager : MonoBehaviour
 
     public void StartTurn()
     {
-        DrawMonster();
-        _playerDeckManager.StartTurn();
-        
+        DrawMonster(() => 
+        {
+            _playerDeckManager.StartTurn();
+        });
     }
 
     public void EndTurn()
@@ -56,10 +57,10 @@ public class GameManager : MonoBehaviour
         _playerDeckManager.DiscardHand();
     }
 
-    public void DrawMonster()
+    public void DrawMonster(System.Action onAnimationFinished)
     {
         MonsterCardData drawn = _monsterDeckManager.DrawMonster();
-        MonsterCardController card = _monsterTrack.AddMonster(drawn);
+        MonsterCardController card = _monsterTrack.AddMonster(drawn, onAnimationFinished);
         card.ClickController.OnClick.AddListener(() => SelectMonster(card));
     }
 
