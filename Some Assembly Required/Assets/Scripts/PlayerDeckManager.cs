@@ -30,6 +30,7 @@ public class PlayerDeckManager : MonoBehaviour
 
     public void DrawCards(int count, System.Action onAnimationComplete)
     {
+        Debug.Log($"DrawCards({count})");
         if (count == 0) 
         { 
             onAnimationComplete.Invoke(); 
@@ -68,6 +69,7 @@ public class PlayerDeckManager : MonoBehaviour
     }
     public void DrawCard(System.Action onAnimationComplete)
     {
+        Debug.Log("In draw card");
         // TODO: Display out of cards message?
         if (PlayerDeck.Count == 0 && DiscardPile.Count == 0) { return; }
         if (PlayerDeck.Count == 0)

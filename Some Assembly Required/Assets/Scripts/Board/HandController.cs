@@ -73,6 +73,7 @@ public class HandController : MonoBehaviour
             position.y += maxY * heightCurve;
             
             Quaternion rotation = Quaternion.Euler(0, 0, startRotation + rotationIncrement * ix);
+            onAnimationComplete = ix == 0 ? onAnimationComplete : () => {};
             StartCoroutine(AnimateCardMove(card, position, rotation, onAnimationComplete));
         }
     }
