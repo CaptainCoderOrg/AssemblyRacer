@@ -26,14 +26,19 @@ public class PlayerDeckManager : MonoBehaviour
         InitializePlayerDeck();
     }
 
-    public void StartTurn() => StartCoroutine(DrawCards(6));
+    public void StartTurn(System.Action onAnimationComplete) => DrawCards(6, onAnimationComplete);
 
-    public IEnumerator DrawCards(int count)
+    public void DrawCards(int count, System.Action onAnimationComplete)
     {
-        for (int ix = 0; ix < count; ix++)
-        {
-            yield return new WaitForSeconds(DrawCard());
+        if (count == 0) 
+        { 
+            onAnimationComplete.Invoke(); 
+            return;
         }
+        DrawCard(() =>
+        {
+            DrawCards(count - 1, onAnimationComplete);
+        });
     }
 
     public void AddCardToDiscard(CardController toAdd)
@@ -42,9 +47,9 @@ public class PlayerDeckManager : MonoBehaviour
         _handController.Discarded.Add(toAdd);
     }
 
-    public void DiscardHand()
+    public void DiscardHand(System.Action onAnimationComplete)
     {
-        DiscardPile.AddRange(_handController.DiscardHand(_discardPileLocation).Select(card => card.Card));
+        DiscardPile.AddRange(_handController.DiscardHand(_discardPileLocation, onAnimationComplete).Select(card => card.Card));
     }
 
     private void InitializePlayerDeck()
@@ -61,48 +66,47 @@ public class PlayerDeckManager : MonoBehaviour
         OnDeckSizeChange.Invoke(PlayerDeck.Count);
         OnDeckSizeChangeString.Invoke(PlayerDeck.Count.ToString());
     }
-    public float DrawCard()
+    public void DrawCard(System.Action onAnimationComplete)
     {
+        // TODO: Display out of cards message?
+        if (PlayerDeck.Count == 0 && DiscardPile.Count == 0) { return; }
         if (PlayerDeck.Count == 0)
         {
-            float delay = ShuffleDiscard();
-            StartCoroutine(DelayDraw(delay));
-            return delay;
+            ShuffleDiscard(() =>
+            {
+                DrawCard(onAnimationComplete);
+            });
+            return;
         }
-        // TODO: Display empty deck message?
-        if (PlayerDeck.Count == 0) { return 0.15f; }
         CardData drawn = PlayerDeck[PlayerDeck.Count - 1];
         PlayerDeck.RemoveAt(PlayerDeck.Count - 1);
         OnDeckSizeChange.Invoke(PlayerDeck.Count);
         OnDeckSizeChangeString.Invoke(PlayerDeck.Count.ToString());
-        CardController card = _handController.DrawCard(drawn);
-        return 0.15f;
+        CardController card = _handController.DrawCard(drawn, onAnimationComplete);
     }
 
-    public float ShuffleDiscard()
+    public void ShuffleDiscard(System.Action onAnimationComplete)
     {
-        DiscardPile.Clear();
-        int delay = 0;
-
-        foreach (CardController card in _handController.Discarded)
+        
+        if (_handController.Discarded.Count == 0)
         {
-            CardData data = card.Card;
-            PlayerDeck.Add(data);
-            int count = PlayerDeck.Count;
-            StartCoroutine(_handController.AnimateShuffle(card, delay++, () =>
-            {
-                OnDeckSizeChange.Invoke(count);
-                OnDeckSizeChangeString.Invoke(count.ToString());
-            }));
+            DiscardPile.Clear();
+            PlayerDeck.Shuffle();
+            onAnimationComplete.Invoke();
+            return;
         }
-        _handController.Discarded.Clear();
-        return delay * _handController.AnimationDuration  + 0.25f;
+
+        CardController card = _handController.Discarded[_handController.Discarded.Count - 1];
+        _handController.Discarded.RemoveAt(_handController.Discarded.Count - 1);
+        CardData data = card.Card;
+        PlayerDeck.Add(data);
+        int count = PlayerDeck.Count;
+        StartCoroutine(_handController.AnimateShuffle(card, () =>
+        {
+            OnDeckSizeChange.Invoke(count);
+            OnDeckSizeChangeString.Invoke(count.ToString());            
+            ShuffleDiscard(onAnimationComplete);
+        }));
     }
 
-    private IEnumerator DelayDraw(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        PlayerDeck.Shuffle();
-        DrawCard();
-    }
 }

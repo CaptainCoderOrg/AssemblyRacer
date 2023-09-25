@@ -48,13 +48,13 @@ public class GameManager : MonoBehaviour
     {
         DrawMonster(() => 
         {
-            _playerDeckManager.StartTurn();
+            _playerDeckManager.StartTurn(() => {});
         });
     }
 
     public void EndTurn()
     {
-        _playerDeckManager.DiscardHand();
+        _playerDeckManager.DiscardHand(() => {});
     }
 
     public void DrawMonster(System.Action onAnimationFinished)
@@ -77,5 +77,5 @@ public class GameManager : MonoBehaviour
         _monsterDialog.gameObject.SetActive(false);
     }
 
-    public void DrawCard() => _playerDeckManager.DrawCard();
+    public void DrawCard() => _playerDeckManager.DrawCard(() => {});
 }
