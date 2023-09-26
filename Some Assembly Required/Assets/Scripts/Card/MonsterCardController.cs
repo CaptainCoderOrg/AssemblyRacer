@@ -8,7 +8,7 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(CardHoverController), typeof(CardClickController), typeof(SortingGroup))]
 public class MonsterCardController : MonoBehaviour
 {
-    
+    private PolygonCollider2D _collider;
     [SerializeField]
     private TextMeshPro _attackDamage;
     [SerializeField]
@@ -28,6 +28,16 @@ public class MonsterCardController : MonoBehaviour
             Render();
         }
     }
+    private bool _isInteractable = true;
+    public bool Interactable 
+    { 
+        get => _isInteractable; 
+        set
+        {
+            _isInteractable = value;
+            _collider.enabled = value;
+        }
+    }
     public CardClickController ClickController { get; private set; }
     public SortingGroup  SortingGroup { get; private set; }
     
@@ -38,6 +48,7 @@ public class MonsterCardController : MonoBehaviour
     {
         ClickController = GetComponent<CardClickController>();
         SortingGroup = GetComponent<SortingGroup>();
+        _collider = GetComponent<PolygonCollider2D>();
     }
 
     public void Render()

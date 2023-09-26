@@ -69,6 +69,7 @@ public class MonsterTrackController : MonoBehaviour
     public void MonsterAttacks(MonsterCardController card, System.Action onAnimationFinished)
     {
         // TODO: And then animation monad would be great here.
+        card.Interactable = false;
         StartCoroutine(SlideCardTo(card.gameObject, _booBooTemplate.transform, _cardSlideTime, () => {
             GameObject grouped = new GameObject("Monster and Wound");
             grouped.transform.position = card.transform.position;
