@@ -4,17 +4,20 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(PlayerDeckManager), typeof(MonsterDeckManager))]
+[RequireComponent(typeof(PlayerDeckManager), typeof(MonsterDeckManager), typeof(RecruitDeckManager))]
 public class GameManager : MonoBehaviour
 {
 
     [SerializeField]
     private MonsterTrackController _monsterTrack;
     [SerializeField]
+    private RecruitsTrackController _recruitsTrack;
+    [SerializeField]
     private MonsterDialogController _monsterDialog;
     [field: SerializeField]
     public MonsterCardController SelectedMonster { get; private set; }
     private PlayerDeckManager _playerDeckManager;
+    private RecruitDeckManager _recruitDeckManager;
     private MonsterDeckManager _monsterDeckManager;
     public UnityEvent<string> OnWoundsChangedString;
     private int _wounds = 10;
@@ -23,6 +26,7 @@ public class GameManager : MonoBehaviour
     {
         _playerDeckManager = GetComponent<PlayerDeckManager>();
         _monsterDeckManager = GetComponent<MonsterDeckManager>();
+        _recruitDeckManager = GetComponent<RecruitDeckManager>();
     }
 
     void Start()
@@ -41,6 +45,27 @@ public class GameManager : MonoBehaviour
     {
         _playerDeckManager.AddCardToDiscard(evt.wound);
         // TODO: If wounds are 0, end the game.
+    }
+
+    public void SetupBoard()
+    {
+        FillRecruitTrack(
+        () => {
+            StartTurn();
+        }
+        );
+    }
+
+    public void FillRecruitTrack(System.Action onAnimationComplete)
+    {
+        CardController card = null;
+        card  = _recruitsTrack.AddRecruit(_recruitDeckManager, () =>
+        {
+            if (card is not null)
+            {
+                FillRecruitTrack(onAnimationComplete);
+            }
+        });
     }
 
 

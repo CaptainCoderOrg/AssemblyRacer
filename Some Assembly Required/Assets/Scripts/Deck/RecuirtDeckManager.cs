@@ -36,12 +36,17 @@ public class RecruitDeckManager : MonoBehaviour
         OnDeckSizeChangeString.Invoke(RecruitDeck.Count.ToString());
     }
 
-    public CardData DrawRecruit()
+    public bool TryDrawRecruit(out CardData drawn)
     {
-        CardData drawn = RecruitDeck[RecruitDeck.Count - 1];
+        if (RecruitDeck.Count == 0 )
+        {
+            drawn = null;
+            return false;
+        }
+        drawn = RecruitDeck[RecruitDeck.Count - 1];
         RecruitDeck.RemoveAt(RecruitDeck.Count - 1);
         OnDeckSizeChange.Invoke(RecruitDeck.Count);
         OnDeckSizeChangeString.Invoke(RecruitDeck.Count.ToString());
-        return drawn;
+        return true;
     }
 }
