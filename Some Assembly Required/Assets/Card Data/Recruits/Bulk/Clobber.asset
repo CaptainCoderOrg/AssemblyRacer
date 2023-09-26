@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Clobber
   m_EditorClassIdentifier: 
   Art: {fileID: 21300000, guid: bf83b386636334645a357cdc2270331a, type: 3}
+  UIArt: {fileID: 21300000, guid: 6e3d771bf9066524aa954a584f4f2254, type: 3}
   Name: Clobber!
   Attack: 5
   Gold: 0
@@ -20,3 +21,4 @@ MonoBehaviour:
   Cost: 8
   Wounds: 0
   AbilityText: 'Discard a wound: +5 Attack'
+  FlavorText: It's clobberin' time!

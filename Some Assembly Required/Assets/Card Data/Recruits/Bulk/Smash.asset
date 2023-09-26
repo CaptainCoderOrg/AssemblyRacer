@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Smash
   m_EditorClassIdentifier: 
   Art: {fileID: 21300000, guid: 46c2f7aa88f1f3e46aeac4bc96b52324, type: 3}
+  UIArt: {fileID: 21300000, guid: 9fed14edfe33ec94ba1fd2204d257017, type: 3}
   Name: Smash
   Attack: 2
   Gold: 0
   Magic: 0
   Cost: 3
+  Wounds: 0
+  AbilityText: 
+  FlavorText: Bulk  Smash!

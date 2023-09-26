@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c0bc89b2174864b8dd0c97de0a4923, type: 3}
+  m_Name: Set Incredulous Bulk
+  m_EditorClassIdentifier: 
+  Cards:
+  - Card: {fileID: 11400000, guid: f2933a7a144498f4a85139855ba82b34, type: 2}
+    Count: 1
+  - Card: {fileID: 11400000, guid: 9d32c77f8b3be4d4b98e87b469050b4d, type: 2}
+    Count: 4
+  - Card: {fileID: 11400000, guid: cd0418073bdf4854facc5e15cae55c12, type: 2}
+    Count: 3
+  - Card: {fileID: 11400000, guid: eac6a90ddb6084d4bb0f666e1a8d4740, type: 2}
+    Count: 2

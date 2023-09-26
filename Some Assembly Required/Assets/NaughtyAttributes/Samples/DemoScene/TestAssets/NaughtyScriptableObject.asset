@@ -9,14 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b987ceda2351194aa1f0629d344712b, type: 3}
-  m_Name: Gandork
+  m_Script: {fileID: 11500000, guid: 753bdb918c6038142acddbd7aae6958f, type: 3}
+  m_Name: NaughtyScriptableObject
   m_EditorClassIdentifier: 
-  Art: {fileID: 21300000, guid: f0ffc038c74925b42af098df46f7e5d2, type: 3}
-  Name: Gandork
-  Attack: 0
-  Gold: 1
-  Magic: 2
-  Cost: 2
-  Wounds: 0
-  AbilityText: 
+  listA:
+  - {fileID: 11400000, guid: 149474eb879a6a641b560ca17d48712f, type: 2}
+  - {fileID: 11400000, guid: 149474eb879a6a641b560ca17d48712f, type: 2}

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Intimidate
   m_EditorClassIdentifier: 
   Art: {fileID: 21300000, guid: ae36883ed0823914ea82d227e4a15417, type: 3}
+  UIArt: {fileID: 21300000, guid: 7e5494782473839438644547ec519463, type: 3}
   Name: Intimidate
   Attack: 0
   Gold: 0
@@ -20,3 +21,4 @@ MonoBehaviour:
   Cost: 4
   Wounds: 0
   AbilityText: Discard a wound then draw 3 cards
+  FlavorText: '**Cracks Knuckles**'
