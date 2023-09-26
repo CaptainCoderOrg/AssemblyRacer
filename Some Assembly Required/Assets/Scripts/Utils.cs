@@ -20,18 +20,23 @@ public static class Utils
 
     public static void DestroyChildren(this Transform toDestroy)
     {
+        if (Application.isPlaying == false)
+        {
+            DestroyChildrenImmediate(toDestroy);
+            return;
+        }
+        foreach (Transform child in toDestroy)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+    }
+
+        public static void DestroyChildrenImmediate(this Transform toDestroy)
+    {
         while (toDestroy.childCount > 0)
         {
             Transform child = toDestroy.GetChild(0);
-            if (Application.isEditor)
-            {
-                Debug.Log(child.name);
-                GameObject.DestroyImmediate(child.gameObject);
-            }
-            else
-            {
-                GameObject.Destroy(child.gameObject);
-            }
+            GameObject.DestroyImmediate(child.gameObject);
         }
     }
 }

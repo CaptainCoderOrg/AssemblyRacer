@@ -25,9 +25,17 @@ public class RecruitsTrackController : MonoBehaviour
 
     public CardController AddRecruit(RecruitDeckManager deckManager, System.Action onAnimationFinished)
     {
-        if (TryFindEmptyRecruitSlot(out int ix) == false) { return null; }
+        if (TryFindEmptyRecruitSlot(out int ix) == false) 
+        { 
+            onAnimationFinished.Invoke();
+            return null; 
+        }
         // TODO: This should be game over?
-        if (deckManager.TryDrawRecruit(out CardData toAdd) == false) { return null; }
+        if (deckManager.TryDrawRecruit(out CardData toAdd) == false) 
+        { 
+            onAnimationFinished.Invoke();
+            return null; 
+        }
         CardController newCard = Instantiate(_template, _recruitsContainer);
         newCard.Card = toAdd;
         newCard.name = toAdd.Name;

@@ -14,8 +14,12 @@ public class GameManager : MonoBehaviour
     private RecruitsTrackController _recruitsTrack;
     [SerializeField]
     private MonsterDialogController _monsterDialog;
+    [SerializeField]
+    private RecruitDialogController _recruitDialog;
     [field: SerializeField]
     public MonsterCardController SelectedMonster { get; private set; }
+    [field: SerializeField]
+    public CardController SelectedRecruit { get; private set; }
     private PlayerDeckManager _playerDeckManager;
     private RecruitDeckManager _recruitDeckManager;
     private MonsterDeckManager _monsterDeckManager;
@@ -65,7 +69,12 @@ public class GameManager : MonoBehaviour
             {
                 FillRecruitTrack(onAnimationComplete);
             }
+            else
+            {
+                onAnimationComplete.Invoke();
+            }
         });
+        card?.ClickController.OnClick.AddListener(() => SelectRecruit(card));
     }
 
 
@@ -96,12 +105,23 @@ public class GameManager : MonoBehaviour
         SelectedMonster = monsterCard;
         _monsterDialog.Card = monsterCard.Card;
         _monsterDialog.gameObject.SetActive(true);
+        _recruitDialog.gameObject.SetActive(false);
     }
 
-    public void DeselectMonster()
+    public void SelectRecruit(CardController recruitCard)
+    {
+        SelectedRecruit = recruitCard;
+        _recruitDialog.Card = recruitCard.Card;
+        _recruitDialog.gameObject.SetActive(true);
+        _monsterDialog.gameObject.SetActive(false);
+    }
+
+    public void Unselect()
     {
         SelectedMonster = null;
         _monsterDialog.gameObject.SetActive(false);
+        SelectedRecruit = null;
+        _recruitDialog.gameObject.SetActive(false);
     }
 
     public void DrawCard()
