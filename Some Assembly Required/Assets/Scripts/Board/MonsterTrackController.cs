@@ -124,4 +124,24 @@ public class MonsterTrackController : MonoBehaviour
         toMove.transform.position = endPosition;
         OnComplete?.Invoke();
     }
+
+    internal bool TrySelectMonster(int ix, out MonsterCardController monsterCard)
+    {
+        monsterCard = null;
+        if (_monsters[ix] == null) { return false; }
+        monsterCard = _monsters[ix];
+        return true;
+    }
+
+    internal bool TryFindMonsterIx(MonsterCardController monsterCard, out int ix)
+    {
+        for (ix = 0; ix < _monsters.Length; ix++)
+        {
+            if (_monsters[ix] == monsterCard)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

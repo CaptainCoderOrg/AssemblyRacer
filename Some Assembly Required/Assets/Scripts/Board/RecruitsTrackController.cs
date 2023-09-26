@@ -15,6 +15,7 @@ public class RecruitsTrackController : MonoBehaviour
     private Transform _discardPileTransform;
     [SerializeField]
     private CardController[] _recruits;
+    public CardController[] Recruits => _recruits;
     [SerializeField]
     private Transform _recruitsContainer;
 
@@ -94,5 +95,17 @@ public class RecruitsTrackController : MonoBehaviour
         }
         toMove.transform.position = endPosition;
         OnComplete?.Invoke();
+    }
+
+    internal bool TryFindRecruitIx(CardController card, out int ix)
+    {
+        for (ix = 0; ix < _recruits.Length; ix++)
+        {
+            if (_recruits[ix] == card)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

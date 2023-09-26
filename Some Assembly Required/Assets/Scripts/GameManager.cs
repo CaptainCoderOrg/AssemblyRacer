@@ -18,8 +18,10 @@ public class GameManager : MonoBehaviour
     private RecruitDialogController _recruitDialog;
     [field: SerializeField]
     public MonsterCardController SelectedMonster { get; private set; }
+    private int _selectedMonsturIx = -1;
     [field: SerializeField]
     public CardController SelectedRecruit { get; private set; }
+    private int _selectedRecruitIx = -1;
     private PlayerDeckManager _playerDeckManager;
     private RecruitDeckManager _recruitDeckManager;
     private MonsterDeckManager _monsterDeckManager;
@@ -102,15 +104,38 @@ public class GameManager : MonoBehaviour
 
     public void SelectMonster(MonsterCardController monsterCard)
     {
-        SelectedMonster = monsterCard;
-        _monsterDialog.Card = monsterCard.Card;
-        _monsterDialog.gameObject.SetActive(true);
-        _recruitDialog.gameObject.SetActive(false);
+        if(_monsterTrack.TryFindMonsterIx(monsterCard, out int ix))
+        {
+            SelectMonster(ix);
+        }    
+    }
+    
+
+    public void SelectMonster(int ix)
+    {
+        if(_monsterTrack.TrySelectMonster(ix, out MonsterCardController monsterCard))
+        {
+            SelectedMonster = monsterCard;
+            _monsterDialog.Card = monsterCard.Card;
+            _monsterDialog.gameObject.SetActive(true);
+            _recruitDialog.gameObject.SetActive(false);
+            _selectedMonsturIx = ix;
+        }
     }
 
-    public void SelectRecruit(CardController recruitCard)
+    public void SelectRecruit(CardController card)
     {
+        if(_recruitsTrack.TryFindRecruitIx(card, out int ix))
+        {
+            SelectRecruit(ix);
+        }  
+    }
+
+    public void SelectRecruit(int ix)
+    {
+        CardController recruitCard = _recruitsTrack.Recruits[ix];
         SelectedRecruit = recruitCard;
+        _selectedRecruitIx = ix;
         _recruitDialog.Card = recruitCard.Card;
         _recruitDialog.gameObject.SetActive(true);
         _monsterDialog.gameObject.SetActive(false);
@@ -120,8 +145,10 @@ public class GameManager : MonoBehaviour
     {
         SelectedMonster = null;
         _monsterDialog.gameObject.SetActive(false);
+        _selectedMonsturIx = -1;
         SelectedRecruit = null;
         _recruitDialog.gameObject.SetActive(false);
+        _selectedRecruitIx = -1;
     }
 
     public void DrawCard()
