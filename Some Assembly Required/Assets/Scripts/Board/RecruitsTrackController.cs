@@ -59,6 +59,18 @@ public class RecruitsTrackController : MonoBehaviour
         return false;
     }
 
+    public void AddRecruitToDiscard(int ix, PlayerDeckManager playerDeckManager, System.Action onAnimationComplete)
+    {
+        CardController card = _recruits[ix];
+        StartCoroutine(SlideCardTo(card.gameObject, _discardPileTransform, _cardSlideTime, () =>
+        {
+            playerDeckManager.AddCardToDiscard(card);
+            card.Interactable = false;
+            _recruits[ix] = null;
+            onAnimationComplete.Invoke();
+        }));
+    }
+
     public IEnumerator SlideCardTo(GameObject toMove, Transform target, float? duration = null, System.Action OnComplete = null)
     {
         float slideTime = duration ?? _cardSlideTime;

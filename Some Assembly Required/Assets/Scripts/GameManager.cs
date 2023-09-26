@@ -128,4 +128,19 @@ public class GameManager : MonoBehaviour
     {
         _playerDeckManager.DrawCard(() => {});
     }
+
+    public void Recruit(int ix)
+    {
+        _recruitsTrack.AddRecruitToDiscard(ix, _playerDeckManager, 
+        () =>
+            {
+                FillRecruitTrack(() => {});
+            }
+        );
+    }
+
+    public void RecruitShiny()
+    {
+
+    }
 }

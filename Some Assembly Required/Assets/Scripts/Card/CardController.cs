@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(CardClickController), typeof(SortingGroup))]
 public class CardController : MonoBehaviour
 {
+    private PolygonCollider2D _collider;
     [SerializeField]
     private SpriteRenderer[] _icons;
     [SerializeField]
@@ -23,6 +24,16 @@ public class CardController : MonoBehaviour
             Render();
         } 
     }
+    private bool _interactable;
+    public bool Interactable { 
+        get => _interactable;
+        set 
+        {
+            _interactable = value;
+            _collider.enabled = value;
+        }
+    }
+
     [field: SerializeField]
     public IconDatabase IconDatabase { get; private set; }
     public SortingGroup SortingGroup { get; private set; }
@@ -33,6 +44,7 @@ public class CardController : MonoBehaviour
     {
         ClickController = GetComponent<CardClickController>();
         SortingGroup = GetComponent<SortingGroup>();
+        _collider = GetComponent<PolygonCollider2D>();
     }
 
     public void Render()
