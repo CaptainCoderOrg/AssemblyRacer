@@ -79,5 +79,8 @@ public class GameManager : MonoBehaviour
         _monsterDialog.gameObject.SetActive(false);
     }
 
-    public void DrawCard() => _playerDeckManager.DrawCard(() => {});
+    public void DrawCard()
+    {
+        _playerDeckManager.DrawCard(() => {});
+    }
 }

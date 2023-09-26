@@ -6,6 +6,7 @@ using UnityEngine;
 public class CardData : ScriptableObject
 {
     public Sprite Art;
+    public Sprite UIArt;
     public string Name;
     public int Attack;
     public int Gold;
@@ -14,5 +15,7 @@ public class CardData : ScriptableObject
     public int Wounds;
     [TextArea]
     public string AbilityText;
+    [TextArea]
+    public string FlavorText;
 
 }
