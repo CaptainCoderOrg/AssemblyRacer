@@ -28,6 +28,10 @@ public class PlayerDeckManager : MonoBehaviour
 
     public void StartTurn(System.Action onAnimationComplete) => DrawCards(6, onAnimationComplete);
 
+    public void EnableSelectionMode(System.Action<CardController> OnClick) => _handController.EnableSelectionMode(OnClick);
+
+    public void DisableSelectMode() => _handController.DisableSelectMode();
+
     public void DrawCards(int count, System.Action onAnimationComplete)
     {
         if (count == 0) 

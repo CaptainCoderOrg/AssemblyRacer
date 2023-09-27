@@ -7,6 +7,8 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(CardClickController), typeof(SortingGroup))]
 public class CardController : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject _selectedObject;
     private PolygonCollider2D _collider;
     [SerializeField]
     private SpriteRenderer[] _icons;
@@ -31,6 +33,16 @@ public class CardController : MonoBehaviour
         {
             _interactable = value;
             _collider.enabled = value;
+        }
+    }
+
+    private bool _selected;
+    public bool Selected {
+        get => _selected;
+        set
+        {
+            _selected = value;
+            _selectedObject.SetActive(value);
         }
     }
 

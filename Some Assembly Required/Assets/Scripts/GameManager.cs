@@ -139,6 +139,8 @@ public class GameManager : MonoBehaviour
         _recruitDialog.Card = recruitCard.Card;
         _recruitDialog.gameObject.SetActive(true);
         _monsterDialog.gameObject.SetActive(false);
+        _playerDeckManager.EnableSelectionMode(_recruitDialog.OnClickCard);
+        
     }
 
     public void Unselect()
@@ -149,6 +151,7 @@ public class GameManager : MonoBehaviour
         SelectedRecruit = null;
         _recruitDialog.gameObject.SetActive(false);
         _selectedRecruitIx = -1;
+        _playerDeckManager.DisableSelectMode();
     }
 
     public void DrawCard()

@@ -26,6 +26,25 @@ public class HandController : MonoBehaviour
         _cards = new List<CardController>();
     }
 
+    public void EnableSelectionMode(System.Action<CardController> OnClick)
+    {
+        foreach (CardController card in _cards)
+        {
+            card.ClickController.OnClick.RemoveAllListeners();
+            card.Selected = false;
+            card.ClickController.OnClick.AddListener(() => OnClick.Invoke(card));
+        }
+    }
+
+    public void DisableSelectMode()
+    {
+        foreach (CardController card in _cards)
+        {
+            card.ClickController.OnClick.RemoveAllListeners();
+            card.Selected = false;
+        }
+    }
+
     public IEnumerable<CardController> DiscardHand(Transform discardPile, System.Action onAnimationComplete)
     {
         StopAllCoroutines(); // TODO: This is kinda dangerous
