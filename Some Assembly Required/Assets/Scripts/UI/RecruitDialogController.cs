@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class RecruitDialogController : MonoBehaviour
 {
     private HashSet<CardController> _selected = new HashSet<CardController>();
+    public HashSet<CardController> Selected => _selected;
     [SerializeField]
     private CardData _card;
     public CardData Card
@@ -36,7 +37,10 @@ public class RecruitDialogController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _flavorText;
     [SerializeField]
+    private Button _hireButton;
+    [SerializeField]
     private bool _forceValidate;
+
 
     [Button("Force Render")]
     public void Render()
@@ -49,6 +53,8 @@ public class RecruitDialogController : MonoBehaviour
         RenderIcons();
         _abilityText.text = _card.AbilityText;
         _flavorText.text = _card.FlavorText;
+        _costText.color = Color.black;
+        _hireButton.gameObject.SetActive(false);
     }
 
     private void RenderIcons()
@@ -69,7 +75,7 @@ public class RecruitDialogController : MonoBehaviour
             icon.gameObject.SetActive(true);
         }
     }
-    
+
 
     public void OnClickCard(CardController clicked)
     {
@@ -84,7 +90,36 @@ public class RecruitDialogController : MonoBehaviour
             _selected.Add(clicked);
             clicked.Selected = true;
         }
+        UpdateCost();
     }
+
+    private void UpdateCost()
+    {
+        if (_selected.Count == 0)
+        {
+            Render();
+            return;
+        }
+        int totalValue = 0;
+        foreach (CardController card in _selected)
+        {
+            totalValue += card.Card.Gold;
+        }
+        int newCost = Mathf.Max(0, Card.Cost - totalValue);
+        _costText.text = newCost.ToString();
+        if (newCost == 0)
+        {
+            _costText.color = Color.green;
+            _hireButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            _costText.color = Color.red;
+            _hireButton.gameObject.SetActive(false);
+        }
+    }
+
+    
 
     private void OnValidate()
     {

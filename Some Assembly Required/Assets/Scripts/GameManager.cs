@@ -154,6 +154,19 @@ public class GameManager : MonoBehaviour
         _playerDeckManager.DisableSelectMode();
     }
 
+    public void HireRecruit()
+    {
+        if (_selectedRecruitIx < 0) { return; }
+        int ix = _selectedRecruitIx;
+        _playerDeckManager.DiscardCards(_recruitDialog.Selected.ToList(), () =>
+        {
+            Unselect();
+            Recruit(ix);
+        });
+        
+        
+    }
+
     public void DrawCard()
     {
         _playerDeckManager.DrawCard(() => {});

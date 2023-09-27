@@ -47,18 +47,37 @@ public class HandController : MonoBehaviour
 
     public IEnumerable<CardController> DiscardHand(Transform discardPile, System.Action onAnimationComplete)
     {
-        StopAllCoroutines(); // TODO: This is kinda dangerous
+        // StopAllCoroutines(); // TODO: This is kinda dangerous
         for (int ix = 0; ix < _cards.Count; ix++) // (CardController card in _cards)
         {
             CardController card = _cards[ix];
             Discarded.Add(card);
             Quaternion rotation = Quaternion.Euler(0, 0, Random.Range(-15f, 15f));
-            onAnimationComplete = ix == _cards.Count - 1 ? onAnimationComplete : () => {};
-            StartCoroutine(AnimateCardMove(card, discardPile.position, rotation, onAnimationComplete));
+            System.Action action = ix == _cards.Count - 1 ? onAnimationComplete : () => {};
+            StartCoroutine(AnimateCardMove(card, discardPile.position, rotation, action));
             card.GetComponent<PolygonCollider2D>().enabled = false;
+            card.Selected = false;
             yield return card;
         }
         _cards.Clear();
+    }
+
+    internal void DiscardCards(List<CardController> cards, Transform discardPile, System.Action onAnimationComplete)
+    {
+        for (int ix = 0; ix < cards.Count; ix++) //(CardController card in _cards)
+        {
+            CardController card = cards[ix];
+            card.Selected = false;
+            Discarded.Add(card);
+            _cards.Remove(card);
+            Quaternion rotation = Quaternion.Euler(0, 0, Random.Range(-15f, 15f));
+            System.Action action = ix == 0 ? onAnimationComplete : () => {};
+            StartCoroutine(AnimateCardMove(card, discardPile.position, rotation, () =>
+            {
+                PlaceAllCards(action);
+            }));
+            card.GetComponent<PolygonCollider2D>().enabled = false;
+        }
     }
 
     public CardController DrawCard(CardData data, System.Action onAnimationComplete)
@@ -74,7 +93,12 @@ public class HandController : MonoBehaviour
 
     private void PlaceAllCards(System.Action onAnimationComplete)
     {
-        StopAllCoroutines(); // TODO: This is dangerous as it can happen unintentionally.
+        if (_cards.Count == 0)
+        {
+            onAnimationComplete.Invoke();
+            return;
+        }
+        // StopAllCoroutines(); // TODO: This is dangerous as it can happen unintentionally.
         float handSize = Mathf.Max(6, _cards.Count);
         float space = _rightPivot.position.x - _leftPivot.position.x;
         float increment = space / (handSize - 1);
@@ -92,9 +116,10 @@ public class HandController : MonoBehaviour
             position.y += maxY * heightCurve;
             
             Quaternion rotation = Quaternion.Euler(0, 0, startRotation + rotationIncrement * ix);
-            onAnimationComplete = ix == 0 ? onAnimationComplete : () => {};
-            StartCoroutine(AnimateCardMove(card, position, rotation, onAnimationComplete));
+            System.Action action = ix == 0 ? onAnimationComplete : () => {};
+            StartCoroutine(AnimateCardMove(card, position, rotation, action));
         }
+        
     }
 
     public IEnumerator AnimateShuffle(CardController card, System.Action onFinished)
@@ -134,6 +159,5 @@ public class HandController : MonoBehaviour
         onAnimationComplete.Invoke();
     }
 
-    
 
 }

@@ -51,6 +51,12 @@ public class PlayerDeckManager : MonoBehaviour
         _handController.Discarded.Add(toAdd);
     }
 
+    public void DiscardCards(List<CardController> cards, System.Action onAnimationComplete)
+    {
+        DiscardPile.AddRange(cards.Select(card => card.Card));
+        _handController.DiscardCards(cards, _discardPileLocation, onAnimationComplete);
+    }
+
     public void DiscardHand(System.Action onAnimationComplete)
     {
         DiscardPile.AddRange(_handController.DiscardHand(_discardPileLocation, onAnimationComplete).Select(card => card.Card));
