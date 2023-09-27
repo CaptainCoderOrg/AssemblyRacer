@@ -66,8 +66,11 @@ public class GameManager : MonoBehaviour
 
     private void RegisterAbilityCards()
     {
-        _playerDeckManager.EnableSelectionMode((card) =>
-        {
+        _playerDeckManager.EnableSelectionMode(SelectHandCard);
+    }
+
+    public void SelectHandCard(CardController card)
+    {
             _selectedCard = card;
             _cardAbilityDialog.Card = card;
             _cardAbilityDialog.gameObject.SetActive(true);
@@ -75,7 +78,6 @@ public class GameManager : MonoBehaviour
             {
                 _playerDeckManager.EnableSelectionMode(_cardAbilityDialog.OnClickCard);
             }
-        });
     }
 
     public void ActivateAbility()
@@ -236,7 +238,6 @@ public class GameManager : MonoBehaviour
         {
             _monsterTrack.DefeatMonster(ix, () =>
             {
-                Debug.Log($"Adding {woundsGained} boo-boos");
                 AddBooBoos(woundsGained);
             });
             

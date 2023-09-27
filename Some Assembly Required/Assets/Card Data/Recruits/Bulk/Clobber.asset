@@ -20,5 +20,6 @@ MonoBehaviour:
   Magic: 0
   Cost: 8
   Wounds: 0
-  AbilityText: 'Discard a wound: +5 Attack'
+  AbilityText: 'Discard a wound: This card gains +5 attack.'
   FlavorText: It's clobberin' time!
+  Ability: {fileID: 11400000, guid: 3f95ccf4891eb7b42860ff237035a79b, type: 2}
