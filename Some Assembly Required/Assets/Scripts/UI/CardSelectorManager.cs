@@ -4,6 +4,7 @@ using System.Linq;
 
 public static class CardSelectorManager
 {
+    public static event Action OnCleared;
     private static HashSet<CardController> _selected = new HashSet<CardController>();
     public static  IEnumerable<CardController> Selected => _selected.ToArray();
 
@@ -14,6 +15,7 @@ public static class CardSelectorManager
             card.ClickController.OnClick.RemoveAllListeners();
         }
         _selected.Clear();
+        OnCleared.Invoke();
     }
     public static int Count => _selected.Count;
 

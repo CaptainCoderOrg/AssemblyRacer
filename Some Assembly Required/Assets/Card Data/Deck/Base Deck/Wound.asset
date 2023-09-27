@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Wound
   m_EditorClassIdentifier: 
   Art: {fileID: 21300000, guid: 58c31326287e6ad438765c14b1f63e55, type: 3}
+  UIArt: {fileID: 21300000, guid: c7b880e170c7faa45b4c54b14ab940eb, type: 3}
   Name: Boo-boo
   Attack: 0
   Gold: 0
@@ -20,3 +21,5 @@ MonoBehaviour:
   Cost: 0
   Wounds: 0
   AbilityText: 
+  FlavorText: Ouch... that hurts!
+  Ability: {fileID: 0}

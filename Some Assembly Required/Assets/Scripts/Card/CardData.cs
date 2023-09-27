@@ -17,5 +17,6 @@ public class CardData : ScriptableObject
     public string AbilityText;
     [TextArea]
     public string FlavorText;
+    public CardAbility Ability;
 
 }

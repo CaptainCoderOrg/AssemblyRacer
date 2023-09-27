@@ -20,5 +20,6 @@ MonoBehaviour:
   Magic: 0
   Cost: 4
   Wounds: 0
-  AbilityText: Discard a wound then draw 3 cards
+  AbilityText: Discard Intimidate and a wound to draw 3 cards.
   FlavorText: '**Cracks Knuckles**'
+  Ability: {fileID: 11400000, guid: 67c8d7951ee9efd458afc0e78dfa4138, type: 2}

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Magic
   m_EditorClassIdentifier: 
   Art: {fileID: 21300000, guid: 8cdc62fdd0fbd5d47a60a51b72323e2a, type: 3}
+  UIArt: {fileID: 21300000, guid: 092793e364dfd3d49a5ffe2732e06a97, type: 3}
   Name: Spell
   Attack: 0
   Gold: 0
@@ -20,3 +21,5 @@ MonoBehaviour:
   Cost: 0
   Wounds: 0
   AbilityText: 
+  FlavorText: Spelling is hard...
+  Ability: {fileID: 0}

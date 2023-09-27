@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Gold
   m_EditorClassIdentifier: 
   Art: {fileID: 21300000, guid: 513453a7da72bb14187c0869f5c716de, type: 3}
+  UIArt: {fileID: 21300000, guid: 5232e00f94e838a45aa6fb84e7442817, type: 3}
   Name: Gold
   Attack: 0
   Gold: 1
@@ -20,3 +21,5 @@ MonoBehaviour:
   Cost: 0
   Wounds: 0
   AbilityText: 
+  FlavorText: Recruits ain't cheap!
+  Ability: {fileID: 0}

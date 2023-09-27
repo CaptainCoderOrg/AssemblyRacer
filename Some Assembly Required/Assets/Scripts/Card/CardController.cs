@@ -7,6 +7,10 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(CardClickController), typeof(SortingGroup))]
 public class CardController : MonoBehaviour
 {
+    [field: SerializeField]
+    public int BonusDamage { get; set; }
+    [field: SerializeField]
+    public int BonusMagic { get; set; }
     [SerializeField]
     private GameObject _selectedObject;
     private PolygonCollider2D _collider;

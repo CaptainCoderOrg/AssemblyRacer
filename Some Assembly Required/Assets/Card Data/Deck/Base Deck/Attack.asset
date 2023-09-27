@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Attack
   m_EditorClassIdentifier: 
   Art: {fileID: 21300000, guid: ba0f3ded7da6f624cade01402463203b, type: 3}
+  UIArt: {fileID: 21300000, guid: 2a1741ff7c10f134cae660c2b1e56f9e, type: 3}
   Name: Attack
   Attack: 1
   Gold: 0
@@ -20,3 +21,5 @@ MonoBehaviour:
   Cost: 0
   Wounds: 0
   AbilityText: 
+  FlavorText: Give 'em the 'ol pokie pokie!
+  Ability: {fileID: 0}
