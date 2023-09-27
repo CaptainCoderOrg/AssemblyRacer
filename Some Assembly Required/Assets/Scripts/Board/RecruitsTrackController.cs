@@ -18,11 +18,38 @@ public class RecruitsTrackController : MonoBehaviour
     public CardController[] Recruits => _recruits;
     [SerializeField]
     private Transform _recruitsContainer;
+    [SerializeField]
+    private CardController _shiniesTemplate;
 
     private void Start()
     {
         _recruits = new CardController[5];
     }
+
+    public CardController AddShiniesToDiscard(PlayerDeckManager playerDeckManager, System.Action onAnimationFinished)
+    {
+        CardController newShinies = Instantiate(_shiniesTemplate);
+        newShinies.Interactable = false;
+        StartCoroutine(SlideCardTo(newShinies.gameObject, _discardPileTransform, 0.5f, () =>
+        {
+            playerDeckManager.AddCardToDiscard(newShinies);
+            onAnimationFinished.Invoke();
+        }));
+        return newShinies;
+    }
+
+    //     public void AddRecruitToDiscard(int ix, PlayerDeckManager playerDeckManager, System.Action onAnimationComplete)
+    // {
+    //     CardController card = _recruits[ix];
+    //     StartCoroutine(SlideCardTo(card.gameObject, _discardPileTransform, _cardSlideTime, () =>
+    //     {
+    //         playerDeckManager.AddCardToDiscard(card);
+    //         card.Interactable = false;
+    //         _recruits[ix] = null;
+    //         onAnimationComplete.Invoke();
+    //     }));
+    // }
+
 
     public CardController AddRecruit(RecruitDeckManager deckManager, System.Action onAnimationFinished)
     {

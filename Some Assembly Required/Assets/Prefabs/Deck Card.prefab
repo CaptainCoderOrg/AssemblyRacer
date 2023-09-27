@@ -73,15 +73,15 @@ SpriteRenderer:
   m_SortingLayerID: 1522606615
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: dd9c5940752b296428b31c143f2e5bea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.7, y: 1.42}
+  m_Size: {x: 1.52, y: 1.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1009647453925816430
@@ -367,7 +367,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.52, y: 1.34}
+  m_Size: {x: 0.7, y: 1.42}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -562,6 +562,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6969eb9c957b64143adf0f7f03fcb361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <BonusDamage>k__BackingField: 0
+  <BonusMagic>k__BackingField: 0
   _selectedObject: {fileID: 6664493128281056387}
   _icons:
   - {fileID: 2783642297312145677}
@@ -572,7 +574,7 @@ MonoBehaviour:
   - {fileID: 1676711231232329960}
   _title: {fileID: 6332539303615859756}
   _art: {fileID: 2851421207039880006}
-  _card: {fileID: 0}
+  _card: {fileID: 11400000, guid: ae23418a1d25bf74ba170901f7a92080, type: 2}
   <IconDatabase>k__BackingField: {fileID: 11400000, guid: ffedaf308eacd7d40b2ceb5f6211dc95, type: 2}
   ForceUpdate: 0
 --- !u!210 &6608199169125503349
@@ -757,7 +759,7 @@ SpriteRenderer:
   m_SortingLayerID: 1522606615
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ebde2816b6a18cb4ba7d8100c96dc61f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -765,7 +767,7 @@ SpriteRenderer:
   m_Size: {x: 1.52, y: 1.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4520162075061863514
@@ -841,7 +843,7 @@ SpriteRenderer:
   m_SortingLayerID: 1522606615
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 58c31326287e6ad438765c14b1f63e55, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 037463e4c8161594cb5fe945c4396f81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -886,8 +888,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.99, y: 3.61}
-  m_SizeDelta: {x: 19.69, y: 1.6729}
+  m_AnchoredPosition: {x: 0.99, y: 4.25}
+  m_SizeDelta: {x: 19.69, y: 0.967}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &8698720815921597026
 MeshRenderer:
@@ -951,7 +953,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Boo-boo
+  m_text: Slash
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2df900c5936f9cf40ae9a7ed520f817d, type: 2}
   m_sharedMaterial: {fileID: 5363169862331862194, guid: 2df900c5936f9cf40ae9a7ed520f817d, type: 2}
@@ -978,11 +980,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 11
+  m_fontSize: 11.95
   m_fontSizeBase: 11
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 0
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -1014,7 +1016,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 5.6865883, y: -0.7565849, z: 7.4926295, w: 1.3667339}
+  m_margin: {x: 5.6865883, y: -0.33824456, z: 7.4926295, w: -0.22818828}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class HandController : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class HandController : MonoBehaviour
     private AnimationCurve _cardHeightCurve;
     [SerializeField]
     private CardController _template;
+    [SerializeField]
+    private CardController _woundTemplate;
     [SerializeField]
     private Transform _leftPivot;
     [SerializeField]
@@ -24,6 +28,18 @@ public class HandController : MonoBehaviour
     {
         Discarded = new List<CardController>();
         _cards = new List<CardController>();
+    }
+
+    public CardController AddWoundToHand(System.Action onAnimationComplete)
+    {
+        CardController newCard = Instantiate(_template, _cardContainer);
+        newCard.transform.position = _woundTemplate.transform.position;
+        newCard.Card = _woundTemplate.Card;
+        newCard.name = "Wound";
+        newCard.gameObject.SetActive(true);
+        _cards.Add(newCard);
+        PlaceAllCards(onAnimationComplete);
+        return newCard;
     }
 
     public void EnableSelectionMode(System.Action<CardController> OnClick)
@@ -89,6 +105,12 @@ public class HandController : MonoBehaviour
         _cards.Add(newCard);
         PlaceAllCards(onAnimationComplete);
         return newCard;
+    }
+
+    public void AddCardToHand(CardController cardToAdd, System.Action onAnimationComplete)
+    {
+        _cards.Add(cardToAdd);
+        PlaceAllCards(onAnimationComplete);
     }
 
     private void PlaceAllCards(System.Action onAnimationComplete)

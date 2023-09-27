@@ -81,6 +81,8 @@ public class PlayerDeckManager : MonoBehaviour
         OnDeckSizeChange.Invoke(PlayerDeck.Count);
         OnDeckSizeChangeString.Invoke(PlayerDeck.Count.ToString());
     }
+    public void AddCardToHand(CardController card, System.Action onAnimationComplete) => _handController.AddCardToHand(card, onAnimationComplete);
+
     public void DrawCard(System.Action onAnimationComplete)
     {
         // TODO: Display out of cards message?
@@ -124,4 +126,5 @@ public class PlayerDeckManager : MonoBehaviour
         }));
     }
 
+    internal CardController AddWoundToHand(System.Action onAnimationComplete) => _handController.AddWoundToHand(onAnimationComplete);
 }

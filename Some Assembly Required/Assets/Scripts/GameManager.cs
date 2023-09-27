@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -52,7 +53,7 @@ public class GameManager : MonoBehaviour
         CardController wound = _monsterTrack.AddBooBoo(onAnimationFinished);
         _playerDeckManager.AddCardToDiscard(wound);
         // TODO: Check if game over
-        
+
     }
 
     public void AddBooBoos(int count)
@@ -60,7 +61,7 @@ public class GameManager : MonoBehaviour
         if (count == 0)
         {
             return;
-        } 
+        }
         AddBooBoo(() => AddBooBoos(count - 1));
     }
 
@@ -71,13 +72,13 @@ public class GameManager : MonoBehaviour
 
     public void SelectHandCard(CardController card)
     {
-            _selectedCard = card;
-            _cardAbilityDialog.Card = card;
-            _cardAbilityDialog.gameObject.SetActive(true);
-            if (card.Card.Ability is not null)
-            {
-                _playerDeckManager.EnableSelectionMode(_cardAbilityDialog.OnClickCard);
-            }
+        _selectedCard = card;
+        _cardAbilityDialog.Card = card;
+        _cardAbilityDialog.gameObject.SetActive(true);
+        if (card.Card.Ability is not null)
+        {
+            _playerDeckManager.EnableSelectionMode(_cardAbilityDialog.OnClickCard);
+        }
     }
 
     public void ActivateAbility()
@@ -226,30 +227,56 @@ public class GameManager : MonoBehaviour
     public void DefeatMonster()
     {
         int ix = _selectedMonsturIx;
+        MonsterCardController monster = SelectedMonster;
         List<CardController> selected = CardSelectorManager.Selected.ToList();
+        List<Action<Action>> onDefeatEffects = new();
         int woundsGained = 0;
         foreach (CardController card in selected)
         {
             woundsGained += card.Card.Wounds;
+            if (card.Card.Ability is not null)
+            {
+                onDefeatEffects.Add((onAnimationFinished) =>
+                {
+                    card.Card.Ability.OnDefeat(card, monster, this, onAnimationFinished);
+                });
+            }
         }
         Unselect();
         if (ix < 0) { return; }
+
+
         _playerDeckManager.DiscardCards(selected, () =>
         {
             _monsterTrack.DefeatMonster(ix, () =>
             {
-                AddBooBoos(woundsGained);
+                ApplyDefeatEffects(onDefeatEffects, () =>
+                {
+                    AddBooBoos(woundsGained);
+                });
             });
-            
-            // TODO: Run Monster OnDefeat
+
         });
     }
 
-    public void DiscardCards(List<CardController> cards)
+    private void ApplyDefeatEffects(List<Action<Action>> effects, System.Action onAnimationComplete)
+    {
+        if (effects.Count == 0)
+        {
+            onAnimationComplete.Invoke();
+            return;
+        }
+        var action = effects[effects.Count - 1];
+        effects.RemoveAt(effects.Count - 1);
+        action.Invoke(() => ApplyDefeatEffects(effects, onAnimationComplete));
+    }
+
+    public void DiscardCards(List<CardController> cards, System.Action onAnimationComplete)
     {
         _playerDeckManager.DiscardCards(cards, () =>
         {
             CardSelectorManager.Clear();
+            onAnimationComplete.Invoke();
         });
     }
 
@@ -272,8 +299,27 @@ public class GameManager : MonoBehaviour
         );
     }
 
-    public void RecruitShiny()
-    {
+    public void RecruitShiny() => RecruitShiny(() => { });
 
+    public void RecruitShiny(System.Action onAnimationComplete)
+    {
+        _recruitsTrack.AddShiniesToDiscard(_playerDeckManager, () =>
+        {
+            onAnimationComplete.Invoke();
+            RegisterAbilityCards();
+        });
+
+    }
+
+    internal void AddBooBooToHand(Action onAnimationComplete)
+    {
+        _wounds--;
+        OnWoundsChangedString.Invoke(_wounds.ToString());
+        
+        _playerDeckManager.AddWoundToHand(() =>
+        {
+            onAnimationComplete.Invoke();
+            RegisterAbilityCards();
+        });
     }
 }

@@ -16,4 +16,9 @@ public class CardAbility : ScriptableObject
 
     }
 
+    public virtual void OnDefeat(CardController card, MonsterCardController enemy, GameManager manager, System.Action onAnimationCompelte)
+    {
+
+    }
+
 }

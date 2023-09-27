@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Ability - Clobber", menuName = "Assembly/Card Abilities/Clobber Card Ability")]
+[CreateAssetMenu(fileName = "Ability - Clobber", menuName = "Assembly/Card Abilities/Bulk/Ability - Clobber")]
 public class ClobberAbility : CardAbility
 {
 
@@ -30,7 +30,7 @@ public class ClobberAbility : CardAbility
             }
         }
         
-        manager.DiscardCards(toDiscard);
+        manager.DiscardCards(toDiscard, () => {});
         parent.BonusDamage += 5;
         manager.SelectHandCard(parent);
         

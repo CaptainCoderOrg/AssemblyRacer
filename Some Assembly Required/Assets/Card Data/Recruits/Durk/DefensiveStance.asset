@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b987ceda2351194aa1f0629d344712b, type: 3}
-  m_Name: Rage
+  m_Name: DefensiveStance
   m_EditorClassIdentifier: 
-  Art: {fileID: 21300000, guid: 35a2f91af662be848aa8a770e66c432c, type: 3}
-  UIArt: {fileID: 21300000, guid: dab3ce82490b6014299b2bfe7fbbc2fe, type: 3}
-  Name: Rage
-  Attack: 4
+  Art: {fileID: 21300000, guid: f8fdbae4787aa0e4091f3751ffbac70b, type: 3}
+  UIArt: {fileID: 21300000, guid: 3f3a2b803c4a89d42a031c7ca95345f2, type: 3}
+  Name: Defensive
+  Attack: 2
   Gold: 0
   Magic: 0
-  Cost: 2
+  Cost: 4
   Wounds: 0
-  AbilityText: 'On Defeat: Add a Boo-boo to your hand.'
-  FlavorText: AAAAAAA!
-  Ability: {fileID: 11400000, guid: 5df937143a9f09b4c94f61342655e9d7, type: 2}
+  AbilityText: 'Discard: Draw a card'
+  FlavorText: A good offense is the best defense.
+  Ability: {fileID: 0}

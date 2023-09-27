@@ -506,6 +506,7 @@ MonoBehaviour:
   _discardPileTransform: {fileID: 5324986553577124774}
   _recruits: []
   _recruitsContainer: {fileID: 815476793}
+  _shiniesTemplate: {fileID: 1522633936}
 --- !u!1 &75534473
 GameObject:
   m_ObjectHideFlags: 0
@@ -5050,7 +5051,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 67a5a9457d910e543a112bb418efc2ab, type: 3}
     - target: {fileID: 3520678875390648434, guid: 0a8f9f9acaad3254595897b464f5f381, type: 3}
       propertyPath: m_Name
-      value: Shinies
+      value: Shinies Template
       objectReference: {fileID: 0}
     - target: {fileID: 3520678875390648434, guid: 0a8f9f9acaad3254595897b464f5f381, type: 3}
       propertyPath: m_IsActive
@@ -9067,7 +9068,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _handController: {fileID: 1573983607}
-  _starterDeck: {fileID: 11400000, guid: b4f00c18c27d42941b4658ce6113d81a, type: 2}
+  _starterDeck: {fileID: 11400000, guid: 90ed8ab2a24acd241af53d98b7efbd2a, type: 2}
   <PlayerDeck>k__BackingField: []
   <DiscardPile>k__BackingField: []
   _discardPileLocation: {fileID: 5324986553577124774}
@@ -9162,6 +9163,7 @@ MonoBehaviour:
   <CardSets>k__BackingField:
   - {fileID: 11400000, guid: ead576e9177be254daa7247337af429e, type: 2}
   - {fileID: 11400000, guid: b71f4c0899735914499734e6493d90e8, type: 2}
+  - {fileID: 11400000, guid: c2ef6d35b85780649b6b94a15153a531, type: 2}
   <RecruitDeck>k__BackingField: []
 --- !u!1 &1189913465
 GameObject:
@@ -10738,6 +10740,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _template: {fileID: 800159095}
+  _woundTemplate: {fileID: 8196273416712193580}
   _leftPivot: {fileID: 5324986552682231784}
   _rightPivot: {fileID: 5324986554663035571}
   _cardContainer: {fileID: 1922147583}
@@ -15156,16 +15159,10 @@ MonoBehaviour:
   <BonusDamage>k__BackingField: 0
   <BonusMagic>k__BackingField: 0
   _selectedObject: {fileID: 0}
-  _icons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _icons: []
   _title: {fileID: 6332539304277503259}
   _art: {fileID: 2851421206613150321}
-  _card: {fileID: 0}
+  _card: {fileID: 11400000, guid: ccc696d0cbb084f4aaf1e1054874a70c, type: 2}
   <IconDatabase>k__BackingField: {fileID: 11400000, guid: ffedaf308eacd7d40b2ceb5f6211dc95, type: 2}
   ForceUpdate: 0
 --- !u!114 &8196273417048659942

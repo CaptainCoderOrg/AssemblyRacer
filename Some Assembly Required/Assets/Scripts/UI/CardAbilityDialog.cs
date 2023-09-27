@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NaughtyAttributes;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -50,6 +51,7 @@ public class CardAbilityDialog : MonoBehaviour
         _magicDamage.color = Color.black;
         _goldValue.color = Color.black;
         _useButton.gameObject.SetActive(false);
+        UpdateUse();
     }
 
     public void OnClickCard(CardController clicked)

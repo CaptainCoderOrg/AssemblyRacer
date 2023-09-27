@@ -17,8 +17,9 @@ MonoBehaviour:
   Name: Transmute
   Attack: 0
   Gold: 0
-  Magic: 2
+  Magic: 1
   Cost: 2
   Wounds: 0
-  AbilityText: 'On Defeat: Add a Shinies to your discard pile'
-  FlavorText: Kinda like the Midas touch!
+  AbilityText: 'On Defeat: Add a Shinies card to your discard pile.'
+  FlavorText: Using the power of Midas turn your enemies into gold!
+  Ability: {fileID: 11400000, guid: dcd1f0b279ec23a4e9ca7015b20e53a5, type: 2}

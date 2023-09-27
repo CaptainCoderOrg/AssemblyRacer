@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Intimidate Card Ability", menuName = "Assembly/Card Abilities/Intimidate Card Ability")]
+[CreateAssetMenu(fileName = "Ability - Intimidate", menuName = "Assembly/Card Abilities/Bulk/Intimidate Card Ability")]
 public class IntimidateCardAbility : CardAbility
 {
 
@@ -29,11 +30,18 @@ public class IntimidateCardAbility : CardAbility
                 break;
             }
         }
-        
+
         manager.Unselect();
-        manager.DiscardCards(toDiscard);
-        manager.DrawCards(3, () => {});
-        
+        manager.DiscardCards(toDiscard, () =>
+        {
+            manager.DrawCards(3, () => { });
+        });
+
+    }
+
+    public override void OnDefeat(CardController card, MonsterCardController enemy, GameManager manager, Action onAnimationCompelte)
+    {
+        manager.DrawCards(1, () => { });
     }
 
 }

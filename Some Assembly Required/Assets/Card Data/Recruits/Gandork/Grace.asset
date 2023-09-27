@@ -22,3 +22,4 @@ MonoBehaviour:
   Wounds: 0
   AbilityText: 
   FlavorText: A little bit of everything.
+  Ability: {fileID: 0}

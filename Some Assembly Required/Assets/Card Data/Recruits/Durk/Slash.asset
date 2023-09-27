@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b987ceda2351194aa1f0629d344712b, type: 3}
-  m_Name: Rage
+  m_Name: Slash
   m_EditorClassIdentifier: 
-  Art: {fileID: 21300000, guid: 35a2f91af662be848aa8a770e66c432c, type: 3}
-  UIArt: {fileID: 21300000, guid: dab3ce82490b6014299b2bfe7fbbc2fe, type: 3}
-  Name: Rage
-  Attack: 4
+  Art: {fileID: 21300000, guid: 037463e4c8161594cb5fe945c4396f81, type: 3}
+  UIArt: {fileID: 21300000, guid: 5b0332f1c4a05ba42926625211775934, type: 3}
+  Name: Slash
+  Attack: 1
   Gold: 0
   Magic: 0
-  Cost: 2
+  Cost: 3
   Wounds: 0
-  AbilityText: 'On Defeat: Add a Boo-boo to your hand.'
-  FlavorText: AAAAAAA!
-  Ability: {fileID: 11400000, guid: 5df937143a9f09b4c94f61342655e9d7, type: 2}
+  AbilityText: 'Remove a card from your hand: This card gains attack equal to that
+    cards attack. Then draw a card.'
+  FlavorText: Slice and dice!
+  Ability: {fileID: 0}
