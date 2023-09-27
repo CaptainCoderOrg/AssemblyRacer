@@ -1519,7 +1519,7 @@ PrefabInstance:
     - target: {fileID: 1599111543474205268, guid: 0a8f9f9acaad3254595897b464f5f381, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c5923dd669b64b04094c9361fe197799, type: 3}
+      objectReference: {fileID: 21300000, guid: ebde2816b6a18cb4ba7d8100c96dc61f, type: 3}
     - target: {fileID: 1599111543474205268, guid: 0a8f9f9acaad3254595897b464f5f381, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -1543,7 +1543,7 @@ PrefabInstance:
     - target: {fileID: 2783642297312145677, guid: 0a8f9f9acaad3254595897b464f5f381, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c5923dd669b64b04094c9361fe197799, type: 3}
+      objectReference: {fileID: 21300000, guid: dd9c5940752b296428b31c143f2e5bea, type: 3}
     - target: {fileID: 2783642297312145677, guid: 0a8f9f9acaad3254595897b464f5f381, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -1551,7 +1551,7 @@ PrefabInstance:
     - target: {fileID: 2851421207039880006, guid: 0a8f9f9acaad3254595897b464f5f381, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f0ffc038c74925b42af098df46f7e5d2, type: 3}
+      objectReference: {fileID: 21300000, guid: 037463e4c8161594cb5fe945c4396f81, type: 3}
     - target: {fileID: 3520678875390648434, guid: 0a8f9f9acaad3254595897b464f5f381, type: 3}
       propertyPath: m_Name
       value: Template
@@ -1587,10 +1587,10 @@ PrefabInstance:
     - target: {fileID: 4325409706623720983, guid: 0a8f9f9acaad3254595897b464f5f381, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 99130266d5a07814e8e1fa2fe1263e5a, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4325409706623720983, guid: 0a8f9f9acaad3254595897b464f5f381, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5324986554522911579, guid: 0a8f9f9acaad3254595897b464f5f381, type: 3}
       propertyPath: m_LocalScale.x
@@ -1646,7 +1646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6332539303615859756, guid: 0a8f9f9acaad3254595897b464f5f381, type: 3}
       propertyPath: m_text
-      value: Gandork
+      value: Slash
       objectReference: {fileID: 0}
     - target: {fileID: 8196273416065148699, guid: 0a8f9f9acaad3254595897b464f5f381, type: 3}
       propertyPath: ForceUpdate
