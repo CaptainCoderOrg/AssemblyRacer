@@ -120,6 +120,7 @@ public class GameManager : MonoBehaviour
             _monsterDialog.gameObject.SetActive(true);
             _recruitDialog.gameObject.SetActive(false);
             _selectedMonsturIx = ix;
+            _playerDeckManager.EnableSelectionMode(_monsterDialog.OnClickCard);
         }
     }
 
@@ -174,6 +175,7 @@ public class GameManager : MonoBehaviour
         _playerDeckManager.DiscardCards(CardSelectorManager.Selected.ToList(), () =>
         {
             _monsterTrack.DefeatMonster(ix);
+            CardSelectorManager.Clear();
             // TODO: Run Monster OnDefeat
         });
     }

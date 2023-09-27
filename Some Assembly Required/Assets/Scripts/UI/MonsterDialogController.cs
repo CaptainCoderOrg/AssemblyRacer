@@ -8,11 +8,13 @@ using UnityEngine.UI;
 public class MonsterDialogController : MonoBehaviour
 {
     [SerializeField]
+    private Button _defeatButton;
+    [SerializeField]
     private MonsterCardData _card;
     public MonsterCardData Card
     {
         get => _card;
-        set 
+        set
         {
             _card = value;
             Render();
@@ -41,6 +43,57 @@ public class MonsterDialogController : MonoBehaviour
         _magicDamage.text = _card.MagicPoints.ToString();
         _abilityText.text = _card.AbilityText;
         _flavorText.text = _card.FlavorText;
+        _physicalDamage.color = Color.black;
+        _magicDamage.color = Color.black;
+        _defeatButton.gameObject.SetActive(false);
+        UpdateCost();
+    }
+
+    public void OnClickCard(CardController clicked)
+    {
+        CardSelectorManager.OnClick(clicked);
+        UpdateCost();
+    }
+
+    public void UpdateCost()
+    {
+        int totalAttack = 0;
+        int totalMagic = 0;
+        foreach (CardController card in CardSelectorManager.Selected)
+        {
+            totalAttack += card.Card.Attack;
+            totalMagic += card.Card.Magic;
+        }
+
+        int attackRemaining = Mathf.Max(0, Card.HitPoints - totalAttack);
+        _physicalDamage.text = attackRemaining.ToString();
+        if (attackRemaining == 0)
+        {
+            _physicalDamage.color = Color.green;
+        }
+        else
+        {
+            _physicalDamage.color = Color.red;
+        }
+
+        int magicRemaining = Mathf.Max(0, Card.MagicPoints - totalMagic);
+        _magicDamage.text = magicRemaining.ToString();
+        if (magicRemaining == 0)
+        {
+            _magicDamage.color = Color.green;
+        }
+        else
+        {
+            _magicDamage.color = Color.red;
+        }
+        if (magicRemaining == 0 && attackRemaining == 0)
+        {
+            _defeatButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            _defeatButton.gameObject.SetActive(false);
+        }
     }
 
     private void OnValidate()
@@ -48,7 +101,7 @@ public class MonsterDialogController : MonoBehaviour
         if (_forceValidate)
         {
             _forceValidate = false;
-        }        
+        }
         if (_card is null) { return; }
         Render();
     }
