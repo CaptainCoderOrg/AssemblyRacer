@@ -45,6 +45,25 @@ public class GameManager : MonoBehaviour
         CardSelectorManager.OnCleared += RegisterAbilityCards;
     }
 
+    public void AddBooBoo(System.Action onAnimationFinished)
+    {
+        _wounds--;
+        OnWoundsChangedString.Invoke(_wounds.ToString());
+        CardController wound = _monsterTrack.AddBooBoo(onAnimationFinished);
+        _playerDeckManager.AddCardToDiscard(wound);
+        // TODO: Check if game over
+        
+    }
+
+    public void AddBooBoos(int count)
+    {
+        if (count == 0)
+        {
+            return;
+        } 
+        AddBooBoo(() => AddBooBoos(count - 1));
+    }
+
     private void RegisterAbilityCards()
     {
         _playerDeckManager.EnableSelectionMode((card) =>
@@ -206,11 +225,21 @@ public class GameManager : MonoBehaviour
     {
         int ix = _selectedMonsturIx;
         List<CardController> selected = CardSelectorManager.Selected.ToList();
+        int woundsGained = 0;
+        foreach (CardController card in selected)
+        {
+            woundsGained += card.Card.Wounds;
+        }
         Unselect();
         if (ix < 0) { return; }
         _playerDeckManager.DiscardCards(selected, () =>
         {
-            _monsterTrack.DefeatMonster(ix);
+            _monsterTrack.DefeatMonster(ix, () =>
+            {
+                Debug.Log($"Adding {woundsGained} boo-boos");
+                AddBooBoos(woundsGained);
+            });
+            
             // TODO: Run Monster OnDefeat
         });
     }

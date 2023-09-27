@@ -29,6 +29,22 @@ public class MonsterTrackController : MonoBehaviour
         _monsters = new MonsterCardController[5];
     }
 
+    public CardController AddBooBoo(System.Action onAnimationFinished)
+    {
+        CardController woundCard = Instantiate(_booBooTemplate, this.transform);
+        woundCard.gameObject.SetActive(true);
+        woundCard.SortingGroup.sortingLayerName = "Moving Card";
+        woundCard.SortingGroup.sortingOrder = 1;
+        StartCoroutine(SlideCardTo(woundCard.gameObject, _discardPileTransform, 0.5f, () =>
+        {
+            woundCard.transform.parent = null;
+            woundCard.SortingGroup.sortingLayerName = "Card";
+            woundCard.SortingGroup.sortingOrder = 0;
+            onAnimationFinished.Invoke();
+        }));
+        return woundCard;
+    }
+
     public MonsterCardController AddMonster(MonsterCardData toAdd, System.Action onAnimationFinished)
     {
         MonsterCardController newMonster = Instantiate(_template, _monstersContainer);
@@ -41,11 +57,12 @@ public class MonsterTrackController : MonoBehaviour
         return newMonster;
     }
 
-    public void DefeatMonster(int ix)
+    public void DefeatMonster(int ix, System.Action onAnimationFinished)
     {
         if (_monsters[ix] is null) { return; }
         Destroy(_monsters[ix].gameObject);
         _monsters[ix] = null;
+        onAnimationFinished.Invoke();
     }
 
     public void PlaceMonster(MonsterCardController card, int ix, System.Action onAnimationFinished)
