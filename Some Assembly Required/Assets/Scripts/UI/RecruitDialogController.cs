@@ -7,8 +7,7 @@ using UnityEngine.UI;
 
 public class RecruitDialogController : MonoBehaviour
 {
-    private HashSet<CardController> _selected = new HashSet<CardController>();
-    public HashSet<CardController> Selected => _selected;
+    
     [SerializeField]
     private CardData _card;
     public CardData Card
@@ -46,7 +45,7 @@ public class RecruitDialogController : MonoBehaviour
     public void Render()
     {
         Debug.Assert(_card is not null, "Cannot render null card.");
-        _selected.Clear();
+        CardSelectorManager.Clear();
         _image.sprite = _card.UIArt;
         _name.text = _card.Name;
         _costText.text = _card.Cost.ToString();
@@ -79,29 +78,19 @@ public class RecruitDialogController : MonoBehaviour
 
     public void OnClickCard(CardController clicked)
     {
-        if (_selected.Contains(clicked))
-        {
-            _selected.Remove(clicked);
-            clicked.Selected = false;
-
-        }
-        else
-        {
-            _selected.Add(clicked);
-            clicked.Selected = true;
-        }
+        CardSelectorManager.OnClick(clicked);
         UpdateCost();
     }
 
     private void UpdateCost()
     {
-        if (_selected.Count == 0)
+        if (CardSelectorManager.Count == 0)
         {
             Render();
             return;
         }
         int totalValue = 0;
-        foreach (CardController card in _selected)
+        foreach (CardController card in CardSelectorManager.Selected)
         {
             totalValue += card.Card.Gold;
         }

@@ -156,15 +156,26 @@ public class GameManager : MonoBehaviour
 
     public void HireRecruit()
     {
-        if (_selectedRecruitIx < 0) { return; }
         int ix = _selectedRecruitIx;
-        _playerDeckManager.DiscardCards(_recruitDialog.Selected.ToList(), () =>
+        Unselect();
+        if (ix < 0) { return; }        
+        _playerDeckManager.DiscardCards(CardSelectorManager.Selected.ToList(), () =>
         {
-            Unselect();
             Recruit(ix);
+            CardSelectorManager.Clear();
+        });   
+    }
+
+    public void DefeatMonster()
+    {
+        int ix = _selectedMonsturIx;
+        Unselect();
+        if (ix < 0) { return; }
+        _playerDeckManager.DiscardCards(CardSelectorManager.Selected.ToList(), () =>
+        {
+            _monsterTrack.DefeatMonster(ix);
+            // TODO: Run Monster OnDefeat
         });
-        
-        
     }
 
     public void DrawCard()
