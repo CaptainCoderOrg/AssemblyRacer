@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     private RecruitDeckManager _recruitDeckManager;
     private MonsterDeckManager _monsterDeckManager;
     public UnityEvent<string> OnWoundsChangedString;
+    public UnityEvent<int> OnWoundsChanged;
     private int _wounds = 10;
     [SerializeField]
     private CardController _selectedCard;
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour
     {
         _wounds--;
         OnWoundsChangedString.Invoke(_wounds.ToString());
+        OnWoundsChanged.Invoke(_wounds);
         CardController wound = _monsterTrack.AddBooBoo(onAnimationFinished);
         _playerDeckManager.AddCardToDiscard(wound);
         // TODO: Check if game over
@@ -97,6 +99,7 @@ public class GameManager : MonoBehaviour
     {
         _wounds--;
         OnWoundsChangedString.Invoke(_wounds.ToString());
+        OnWoundsChanged.Invoke(_wounds);
     }
 
     private void HandleMonsterAttackFinished((MonsterCardController attacker, CardController wound) evt)
@@ -352,6 +355,7 @@ public class GameManager : MonoBehaviour
     {
         _wounds--;
         OnWoundsChangedString.Invoke(_wounds.ToString());
+        OnWoundsChanged.Invoke(_wounds);
         
         _playerDeckManager.AddWoundToHand(() =>
         {
