@@ -133,4 +133,15 @@ public class PlayerDeckManager : MonoBehaviour
     {
         _handController.RemoveCardsFromGame(cards, onAnimationComplete);
     }
+
+    internal void ReturnCardFromDiscardToHand(CardController card, System.Action onAnimationComplete)
+    {
+        if (DiscardPile.Contains(card.Card) == false)
+        {
+            onAnimationComplete.Invoke();
+            return;
+        }
+        DiscardPile.Remove(card.Card);
+        AddCardToHand(card, onAnimationComplete);
+    }
 }

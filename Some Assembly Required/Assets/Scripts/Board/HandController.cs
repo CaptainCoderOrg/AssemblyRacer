@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class HandController : MonoBehaviour
 {
     [field: SerializeField]
-    public float AnimationDuration {get; private set; } = 0.15f;
+    public float AnimationDuration { get; private set; } = 0.15f;
     [SerializeField]
     private AnimationCurve _cardHeightCurve;
     [SerializeField]
@@ -69,7 +69,7 @@ public class HandController : MonoBehaviour
             CardController card = _cards[ix];
             Discarded.Add(card);
             Quaternion rotation = Quaternion.Euler(0, 0, Random.Range(-15f, 15f));
-            System.Action action = ix == _cards.Count - 1 ? onAnimationComplete : () => {};
+            System.Action action = ix == _cards.Count - 1 ? onAnimationComplete : () => { };
             StartCoroutine(AnimateCardMove(card, discardPile.position, rotation, action));
             card.GetComponent<PolygonCollider2D>().enabled = false;
             card.Selected = false;
@@ -87,7 +87,7 @@ public class HandController : MonoBehaviour
             Discarded.Add(card);
             _cards.Remove(card);
             Quaternion rotation = Quaternion.Euler(0, 0, Random.Range(-15f, 15f));
-            System.Action action = ix == 0 ? onAnimationComplete : () => {};
+            System.Action action = ix == 0 ? onAnimationComplete : () => { };
             StartCoroutine(AnimateCardMove(card, discardPile.position, rotation, () =>
             {
                 PlaceAllCards(action);
@@ -109,6 +109,7 @@ public class HandController : MonoBehaviour
 
     public void AddCardToHand(CardController cardToAdd, System.Action onAnimationComplete)
     {
+        cardToAdd.Interactable = true;
         _cards.Add(cardToAdd);
         PlaceAllCards(onAnimationComplete);
     }
@@ -133,34 +134,40 @@ public class HandController : MonoBehaviour
             CardController card = _cards[ix];
             Vector2 position = _leftPivot.position;
             position.x += increment * ix;
-            float percent = ix/ (handSize - 1);
+            float percent = ix / (handSize - 1);
             float heightCurve = _cardHeightCurve.Evaluate(percent);
             position.y += maxY * heightCurve;
-            
+
             Quaternion rotation = Quaternion.Euler(0, 0, startRotation + rotationIncrement * ix);
-            System.Action action = ix == 0 ? onAnimationComplete : () => {};
+            System.Action action = ix == 0 ? onAnimationComplete : () => { };
             StartCoroutine(AnimateCardMove(card, position, rotation, action));
         }
-        
+
     }
 
     public IEnumerator AnimateShuffle(CardController card, System.Action onFinished)
     {
-        
-        float startTime = Time.time;
-        float duration = AnimationDuration;
-        float endTime = startTime + duration;
-        Vector2 startPosition = card.transform.position;
-        Vector2 endPosition = _template.transform.position;
-        while (Time.time < endTime)
+        if (!card.IsDestroyed())
         {
-            float percent = Mathf.Clamp01((Time.time - startTime) / duration);
-            card.transform.position = Vector2.Lerp(startPosition, endPosition, percent);
-            yield return new WaitForEndOfFrame();
+            float startTime = Time.time;
+            float duration = AnimationDuration;
+            float endTime = startTime + duration;
+            Vector2 startPosition = card.transform.position;
+            Vector2 endPosition = _template.transform.position;
+            while (Time.time < endTime)
+            {
+                float percent = Mathf.Clamp01((Time.time - startTime) / duration);
+                card.transform.position = Vector2.Lerp(startPosition, endPosition, percent);
+                yield return new WaitForEndOfFrame();
+            }
+            card.transform.position = endPosition;
+            onFinished.Invoke();
+            Destroy(card.gameObject);
         }
-        card.transform.position = endPosition;
-        onFinished.Invoke();
-        Destroy(card.gameObject);
+        else
+        {
+            onFinished.Invoke();
+        }
     }
 
     private IEnumerator AnimateCardMove(CardController card, Vector2 endPosition, Quaternion endRotation, System.Action onAnimationComplete)

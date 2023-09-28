@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
         AddBooBoo(() => AddBooBoos(count - 1));
     }
 
-    private void RegisterAbilityCards()
+    public void RegisterAbilityCards()
     {
         _playerDeckManager.EnableSelectionMode(SelectHandCard);
     }
@@ -326,5 +326,15 @@ public class GameManager : MonoBehaviour
     internal void RemoveCardsFromGame(List<CardController> cards, Action onAnimationComplete)
     {
         _playerDeckManager.RemoveCardsFromGame(cards, onAnimationComplete);
+    }
+
+    internal void DiscardHand(Action onAnimationComplete)
+    {
+        _playerDeckManager.DiscardHand(onAnimationComplete);
+    }
+
+    internal void ReturnCardFromDiscardToHand(CardController card, System.Action onAnimationComplete)
+    {
+        _playerDeckManager.ReturnCardFromDiscardToHand(card, onAnimationComplete);
     }
 }

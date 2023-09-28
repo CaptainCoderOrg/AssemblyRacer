@@ -25,4 +25,4 @@ MonoBehaviour:
     Discard your hand:
     Draw 6 cards'
   FlavorText: Chop! Chop! Chop! Chop!
-  Ability: {fileID: 0}
+  Ability: {fileID: 11400000, guid: 0290bfb35d1bcd345969de4a3d673070, type: 2}

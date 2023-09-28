@@ -15156,6 +15156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6969eb9c957b64143adf0f7f03fcb361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimesUsed: 0
   <BonusDamage>k__BackingField: 0
   <BonusMagic>k__BackingField: 0
   _selectedObject: {fileID: 0}
@@ -15177,6 +15178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6969eb9c957b64143adf0f7f03fcb361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimesUsed: 0
   <BonusDamage>k__BackingField: 0
   <BonusMagic>k__BackingField: 0
   _selectedObject: {fileID: 0}
