@@ -9616,7 +9616,6 @@ MonoBehaviour:
         m_CallState: 2
   <MonsterSets>k__BackingField:
   - {fileID: 11400000, guid: c638a51a5fcb1c84096600ed2259e0da, type: 2}
-  - {fileID: 11400000, guid: c638a51a5fcb1c84096600ed2259e0da, type: 2}
   <MonsterDeck>k__BackingField: []
 --- !u!114 &1166331051
 MonoBehaviour:

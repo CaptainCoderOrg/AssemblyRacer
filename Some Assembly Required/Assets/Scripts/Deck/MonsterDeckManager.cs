@@ -36,12 +36,14 @@ public class MonsterDeckManager : MonoBehaviour
         OnDeckSizeChangeString.Invoke(MonsterDeck.Count.ToString());
     }
 
-    public MonsterCardData DrawMonster()
+    public bool TryDrawMonster(out MonsterCardData drawn)
     {
-        MonsterCardData drawn = MonsterDeck[MonsterDeck.Count - 1];
+        drawn = null;
+        if (MonsterDeck.Count == 0) { return false; }
+        drawn = MonsterDeck[MonsterDeck.Count - 1];
         MonsterDeck.RemoveAt(MonsterDeck.Count - 1);
         OnDeckSizeChange.Invoke(MonsterDeck.Count);
         OnDeckSizeChangeString.Invoke(MonsterDeck.Count.ToString());
-        return drawn;
+        return true;
     }
 }

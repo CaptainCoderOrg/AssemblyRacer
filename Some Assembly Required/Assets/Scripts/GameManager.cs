@@ -171,7 +171,11 @@ public class GameManager : MonoBehaviour
 
     public void DrawMonster(System.Action onAnimationFinished)
     {
-        MonsterCardData drawn = _monsterDeckManager.DrawMonster();
+        if (_monsterDeckManager.TryDrawMonster(out MonsterCardData drawn) is false)
+        {
+            GameOver();
+            return;
+        }
         MonsterCardController card = _monsterTrack.AddMonster(drawn, 
             () => 
             {
