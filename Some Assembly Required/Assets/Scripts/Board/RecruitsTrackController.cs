@@ -38,19 +38,6 @@ public class RecruitsTrackController : MonoBehaviour
         return newShinies;
     }
 
-    //     public void AddRecruitToDiscard(int ix, PlayerDeckManager playerDeckManager, System.Action onAnimationComplete)
-    // {
-    //     CardController card = _recruits[ix];
-    //     StartCoroutine(SlideCardTo(card.gameObject, _discardPileTransform, _cardSlideTime, () =>
-    //     {
-    //         playerDeckManager.AddCardToDiscard(card);
-    //         card.Interactable = false;
-    //         _recruits[ix] = null;
-    //         onAnimationComplete.Invoke();
-    //     }));
-    // }
-
-
     public CardController AddRecruit(RecruitDeckManager deckManager, System.Action onAnimationFinished)
     {
         if (TryFindEmptyRecruitSlot(out int ix) == false) 
@@ -134,5 +121,15 @@ public class RecruitsTrackController : MonoBehaviour
             }
         }
         return false;
+    }
+
+    internal void RejectRecruits(System.Action onAnimationFinished)
+    {
+        for(int ix = 0; ix < _recruits.Length; ix++)
+        {
+            Destroy(_recruits[ix].gameObject);
+            _recruits[ix] = null;
+        }
+        onAnimationFinished.Invoke();
     }
 }

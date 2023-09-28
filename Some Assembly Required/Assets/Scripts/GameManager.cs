@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
         _monsterTrack.OnMonsterAttack.AddListener(HandleMonsterAttack);
         _monsterTrack.OnMonsterAttackFinished.AddListener(HandleMonsterAttackFinished);
         CardSelectorManager.OnCleared += RegisterAbilityCards;
+        
     }
 
     public void AddBooBoo(System.Action onAnimationFinished)
@@ -53,6 +54,7 @@ public class GameManager : MonoBehaviour
         CardController wound = _monsterTrack.AddBooBoo(onAnimationFinished);
         _playerDeckManager.AddCardToDiscard(wound);
         // TODO: Check if game over
+        
 
     }
 
@@ -144,7 +146,9 @@ public class GameManager : MonoBehaviour
 
     public void EndTurn()
     {
-        _playerDeckManager.DiscardHand(() => { });
+        _playerDeckManager.DiscardHand(() => { 
+            StartTurn();
+        });
     }
 
     public void DrawMonster() => DrawMonster(() => { });
@@ -299,6 +303,16 @@ public class GameManager : MonoBehaviour
         );
     }
 
+    public void RejectRecruits()
+    {
+        Unselect();
+        _recruitsTrack.RejectRecruits(() =>
+        {
+            FillRecruitTrack(() => {});
+        });
+
+    }
+
     public void RecruitShiny() => RecruitShiny(() => { });
 
     public void RecruitShiny(System.Action onAnimationComplete)
@@ -337,4 +351,6 @@ public class GameManager : MonoBehaviour
     {
         _playerDeckManager.ReturnCardFromDiscardToHand(card, onAnimationComplete);
     }
+
+    
 }
