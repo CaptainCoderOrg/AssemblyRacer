@@ -52,6 +52,10 @@ public class RecruitsTrackController : MonoBehaviour
             return null; 
         }
         CardController newCard = Instantiate(_template, _recruitsContainer);
+        if(newCard.GetComponent<CardCostIcon>() is not null)
+        {
+            newCard.GetComponent<CardCostIcon>().Text.text = toAdd.Cost.ToString();
+        }
         newCard.Card = toAdd;
         newCard.name = toAdd.Name;
         newCard.gameObject.SetActive(true);
@@ -77,6 +81,7 @@ public class RecruitsTrackController : MonoBehaviour
     public void AddRecruitToDiscard(int ix, PlayerDeckManager playerDeckManager, System.Action onAnimationComplete)
     {
         CardController card = _recruits[ix];
+        card.GetComponent<CardCostIcon>()?.ToHide.SetActive(false);
         StartCoroutine(SlideCardTo(card.gameObject, _discardPileTransform, _cardSlideTime, () =>
         {
             playerDeckManager.AddCardToDiscard(card);
