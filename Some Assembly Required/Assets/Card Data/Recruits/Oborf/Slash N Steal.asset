@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b987ceda2351194aa1f0629d344712b, type: 3}
-  m_Name: Coin Toss
+  m_Name: Slash N Steal
   m_EditorClassIdentifier: 
-  Art: {fileID: 21300000, guid: 5f57a40abff2d7b40b345ccbca614e44, type: 3}
-  UIArt: {fileID: 21300000, guid: ffc9cdc1cee619e4088eff66d881df44, type: 3}
-  Name: Coin Toss
-  Attack: 1
+  Art: {fileID: 21300000, guid: 403d3ede3c95ecf4893ce1913d68ad8d, type: 3}
+  UIArt: {fileID: 21300000, guid: 0ce2ec3b2979458418ccf64367011448, type: 3}
+  Name: Slash 'N Steal
+  Attack: 2
   Gold: 0
   Magic: 0
-  Cost: 4
+  Cost: 3
   Wounds: 0
-  AbilityText: You may remove a gold card from the game. This card gains +2 attack.
-  FlavorText: Make it rain!
-  Ability: {fileID: 11400000, guid: d8a876ce175fd9a4eb679c19938b61ed, type: 2}
+  AbilityText: 'On Defeat: Add a shinies to your discard pile.'
+  FlavorText: What is yours is mine
+  Ability: {fileID: 11400000, guid: 7212e1c81b581924ab22f9a40c517c7e, type: 2}

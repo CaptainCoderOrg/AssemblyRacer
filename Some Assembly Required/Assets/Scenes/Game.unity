@@ -9080,7 +9080,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _handController: {fileID: 1573983607}
-  _starterDeck: {fileID: 11400000, guid: 354937d9d2b998a40a687f24e76e82d0, type: 2}
+  _starterDeck: {fileID: 11400000, guid: b4f00c18c27d42941b4658ce6113d81a, type: 2}
   <PlayerDeck>k__BackingField: []
   <DiscardPile>k__BackingField: []
   _discardPileLocation: {fileID: 5324986553577124774}

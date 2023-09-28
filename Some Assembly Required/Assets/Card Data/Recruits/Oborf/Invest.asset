@@ -16,7 +16,7 @@ MonoBehaviour:
   UIArt: {fileID: 21300000, guid: a339e84ec663cfc4590768604690ac9f, type: 3}
   Name: Invest
   Attack: 0
-  Gold: 0
+  Gold: 1
   Magic: 0
   Cost: 2
   Wounds: 0

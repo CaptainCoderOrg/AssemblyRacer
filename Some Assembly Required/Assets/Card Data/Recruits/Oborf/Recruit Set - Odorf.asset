@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40ff0d0407ca5784cae862040da131b5, type: 3}
-  m_Name: Odorf Test Deck
+  m_Script: {fileID: 11500000, guid: 72c0bc89b2174864b8dd0c97de0a4923, type: 3}
+  m_Name: Recruit Set - Odorf
   m_EditorClassIdentifier: 
   Cards:
   - Card: {fileID: 11400000, guid: 072387f41386fbd4ab5e7ed3466c81b0, type: 2}
+    Count: 1
+  - Card: {fileID: 11400000, guid: cc698f7d25eaaaa4189a97576f554704, type: 2}
     Count: 2
-  - Card: {fileID: 11400000, guid: d704589d6a30d2e4b9525fc71455a634, type: 2}
-    Count: 1
-  - Card: {fileID: 11400000, guid: 03007641e5d763a49b48f5f93e850ab7, type: 2}
-    Count: 1
-  - Card: {fileID: 11400000, guid: 96ca8bbf7e0b9dd4d80692dba5dd3ac1, type: 2}
-    Count: 6
+  - Card: {fileID: 11400000, guid: 2e89935cc2d38e24ab7c7ae2c9f6279d, type: 2}
+    Count: 3
+  - Card: {fileID: 11400000, guid: f7bb7d6415c5f924babe53d7e20d61b9, type: 2}
+    Count: 4
