@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: Odorf Test Deck
   m_EditorClassIdentifier: 
   Cards:
-  - Card: {fileID: 11400000, guid: f7bb7d6415c5f924babe53d7e20d61b9, type: 2}
-    Count: 1
+  - Card: {fileID: 11400000, guid: cc698f7d25eaaaa4189a97576f554704, type: 2}
+    Count: 2
   - Card: {fileID: 11400000, guid: d704589d6a30d2e4b9525fc71455a634, type: 2}
     Count: 1
   - Card: {fileID: 11400000, guid: 03007641e5d763a49b48f5f93e850ab7, type: 2}
-    Count: 6
+    Count: 1
+  - Card: {fileID: 11400000, guid: ccc696d0cbb084f4aaf1e1054874a70c, type: 2}
+    Count: 2
+  - Card: {fileID: 11400000, guid: 96ca8bbf7e0b9dd4d80692dba5dd3ac1, type: 2}
+    Count: 2

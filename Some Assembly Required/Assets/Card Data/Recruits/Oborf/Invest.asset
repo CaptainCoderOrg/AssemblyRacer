@@ -18,7 +18,7 @@ MonoBehaviour:
   Attack: 0
   Gold: 0
   Magic: 0
-  Cost: 3
+  Cost: 2
   Wounds: 0
   AbilityText: 'Discard any number of gold cards: This card gains double the discarded
     gold.'
