@@ -30,14 +30,31 @@ public class GameManager : MonoBehaviour
     public UnityEvent<string> OnWoundsChangedString;
     public UnityEvent<int> OnWoundsChanged;
     private int _wounds = 10;
+    public int Wounds 
+    {
+        get => _wounds;
+        set
+        {
+            if (value < 0)
+            {
+                GameOver();
+            }
+            _wounds = Mathf.Max(0, value);
+            OnWoundsChanged.Invoke(_wounds);
+            OnWoundsChangedString.Invoke(_wounds.ToString());
+
+        }
+    }
     [SerializeField]
     private CardController _selectedCard;
+    private GameOverManager _gameOverManager;
 
     void Awake()
     {
         _playerDeckManager = GetComponent<PlayerDeckManager>();
         _monsterDeckManager = GetComponent<MonsterDeckManager>();
         _recruitDeckManager = GetComponent<RecruitDeckManager>();
+        _gameOverManager = GetComponent<GameOverManager>();
     }
 
     void Start()
@@ -50,9 +67,7 @@ public class GameManager : MonoBehaviour
 
     public void AddBooBoo(System.Action onAnimationFinished)
     {
-        _wounds--;
-        OnWoundsChangedString.Invoke(_wounds.ToString());
-        OnWoundsChanged.Invoke(_wounds);
+        Wounds--;
         CardController wound = _monsterTrack.AddBooBoo(onAnimationFinished);
         _playerDeckManager.AddCardToDiscard(wound);
         // TODO: Check if game over
@@ -97,9 +112,7 @@ public class GameManager : MonoBehaviour
 
     private void HandleMonsterAttack(MonsterCardController attacker)
     {
-        _wounds--;
-        OnWoundsChangedString.Invoke(_wounds.ToString());
-        OnWoundsChanged.Invoke(_wounds);
+        Wounds--;
     }
 
     private void HandleMonsterAttackFinished((MonsterCardController attacker, CardController wound) evt)
@@ -353,9 +366,7 @@ public class GameManager : MonoBehaviour
 
     internal void AddBooBooToHand(Action onAnimationComplete)
     {
-        _wounds--;
-        OnWoundsChangedString.Invoke(_wounds.ToString());
-        OnWoundsChanged.Invoke(_wounds);
+        Wounds--;
         
         _playerDeckManager.AddWoundToHand(() =>
         {
@@ -377,6 +388,16 @@ public class GameManager : MonoBehaviour
     internal void ReturnCardFromDiscardToHand(CardController card, System.Action onAnimationComplete)
     {
         _playerDeckManager.ReturnCardFromDiscardToHand(card, onAnimationComplete);
+    }
+
+    public void GameOver()
+    {
+        _gameOverManager.GameOver();
+    }
+
+    public void Win()
+    {
+        
     }
 
     
