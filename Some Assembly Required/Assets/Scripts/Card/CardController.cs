@@ -13,6 +13,8 @@ public class CardController : MonoBehaviour
     public int BonusDamage { get; set; }
     [field: SerializeField]
     public int BonusMagic { get; set; }
+    [field: SerializeField]
+    public int BonusGold { get; set; }
     [SerializeField]
     private GameObject _selectedObject;
     private PolygonCollider2D _collider;

@@ -92,7 +92,7 @@ public class RecruitDialogController : MonoBehaviour
         int totalValue = 0;
         foreach (CardController card in CardSelectorManager.Selected)
         {
-            totalValue += card.Card.Gold;
+            totalValue += card.Card.Gold + card.BonusGold;
         }
         int newCost = Mathf.Max(0, Card.Cost - totalValue);
         _costText.text = newCost.ToString();

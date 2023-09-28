@@ -20,6 +20,7 @@ MonoBehaviour:
   Magic: 0
   Cost: 3
   Wounds: 0
-  AbilityText: 'Discard any number of gold cards: This card gains double that gold.'
+  AbilityText: 'Discard any number of gold cards: This card gains double the discarded
+    gold.'
   FlavorText: Put your money to work for you!
-  Ability: {fileID: 0}
+  Ability: {fileID: 11400000, guid: 65eb3a9ac5dfbc24b8a3c213efba92b5, type: 2}

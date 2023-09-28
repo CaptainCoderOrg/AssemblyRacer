@@ -44,7 +44,7 @@ public class CardAbilityDialog : MonoBehaviour
         _name.text = _card.Card.Name;
         _physicalDamage.text = (_card.Card.Attack + _card.BonusDamage).ToString();
         _magicDamage.text = (_card.Card.Magic + _card.BonusMagic).ToString();
-        _goldValue.text = _card.Card.Gold.ToString();
+        _goldValue.text = (_card.Card.Gold + _card.BonusGold).ToString();
         _abilityText.text = _card.Card.AbilityText;
         _flavorText.text = _card.Card.FlavorText;
         _physicalDamage.color = Color.black;
