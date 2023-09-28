@@ -6,7 +6,7 @@ using UnityEngine;
 public class DefensiveStanceAbility : CardAbility
 {
 
-    public override bool CheckRequirement(List<CardController> selectedCards)
+    public override bool CheckRequirement(CardController card, List<CardController> selectedCards)
     {
         return true;
     }

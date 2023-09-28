@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
         List<CardController> selectedCards = CardSelectorManager.Selected.ToList();
         if (card is null) { return; }
         if (card.Card.Ability is null) { return; }
-        if (card.Card.Ability.CheckRequirement(selectedCards) is false) { return; }
+        if (card.Card.Ability.CheckRequirement(card, selectedCards) is false) { return; }
         card.Card.Ability.ApplyAbility(card, selectedCards, this, _cardAbilityDialog);
     }
 
@@ -321,5 +321,10 @@ public class GameManager : MonoBehaviour
             onAnimationComplete.Invoke();
             RegisterAbilityCards();
         });
+    }
+
+    internal void RemoveCardsFromGame(List<CardController> cards, Action onAnimationComplete)
+    {
+        _playerDeckManager.RemoveCardsFromGame(cards, onAnimationComplete);
     }
 }

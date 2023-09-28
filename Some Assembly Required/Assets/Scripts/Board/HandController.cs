@@ -181,5 +181,24 @@ public class HandController : MonoBehaviour
         onAnimationComplete.Invoke();
     }
 
+    internal void RemoveCardsFromGame(List<CardController> cards, System.Action onAnimationComplete)
+    {
+        int ix = 0;
+        foreach (CardController card in cards)
+        {
+            Vector2 endPosition = card.transform.position;
+            endPosition.y = 10;
+            card.Selected = false;
+            _cards.Remove(card);
+            StartCoroutine(AnimateCardMove(card, endPosition, card.transform.rotation, () =>
+            {
 
+                Destroy(card.gameObject);
+                if (ix++ == 0)
+                {
+                    onAnimationComplete.Invoke();
+                }
+            }));
+        }
+    }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -127,4 +128,9 @@ public class PlayerDeckManager : MonoBehaviour
     }
 
     internal CardController AddWoundToHand(System.Action onAnimationComplete) => _handController.AddWoundToHand(onAnimationComplete);
+
+    internal void RemoveCardsFromGame(List<CardController> cards, Action onAnimationComplete)
+    {
+        _handController.RemoveCardsFromGame(cards, onAnimationComplete);
+    }
 }

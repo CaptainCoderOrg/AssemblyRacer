@@ -8,6 +8,8 @@ using UnityEngine.Rendering;
 public class CardController : MonoBehaviour
 {
     [field: SerializeField]
+    public int TimesUsed = 0;
+    [field: SerializeField]
     public int BonusDamage { get; set; }
     [field: SerializeField]
     public int BonusMagic { get; set; }

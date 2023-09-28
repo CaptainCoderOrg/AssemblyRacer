@@ -65,7 +65,7 @@ public class CardAbilityDialog : MonoBehaviour
         _useButton.gameObject.SetActive(false);
         if (_card is null) { return; }
         if (_card.Card.Ability is null) { return; }
-        if (_card.Card.Ability.CheckRequirement(CardSelectorManager.Selected.ToList()) is false) { return; }
+        if (_card.Card.Ability.CheckRequirement(_card, CardSelectorManager.Selected.ToList()) is false) { return; }
         _useButton.gameObject.SetActive(true);
     }
 }

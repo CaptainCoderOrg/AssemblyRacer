@@ -20,7 +20,7 @@ MonoBehaviour:
   Magic: 0
   Cost: 3
   Wounds: 0
-  AbilityText: 'Remove a card from your hand: This card gains attack equal to that
-    cards attack. Then draw a card.'
+  AbilityText: Once this turn, you may remove an attack card from the game. This
+    card gains +2 attack.
   FlavorText: Slice and dice!
-  Ability: {fileID: 0}
+  Ability: {fileID: 11400000, guid: 4c5ffca9a629f27469dc6ece99dc9a80, type: 2}

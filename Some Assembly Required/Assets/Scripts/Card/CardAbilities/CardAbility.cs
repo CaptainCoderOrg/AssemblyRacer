@@ -6,7 +6,7 @@ using UnityEngine;
 public class CardAbility : ScriptableObject
 {
 
-    public virtual bool CheckRequirement(List<CardController> cards)
+    public virtual bool CheckRequirement(CardController card, List<CardController> cards)
     {
         return false;
     }

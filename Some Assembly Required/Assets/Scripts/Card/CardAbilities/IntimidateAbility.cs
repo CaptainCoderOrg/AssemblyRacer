@@ -7,7 +7,7 @@ using UnityEngine;
 public class IntimidateCardAbility : CardAbility
 {
 
-    public override bool CheckRequirement(List<CardController> selectedCards)
+    public override bool CheckRequirement(CardController parent, List<CardController> selectedCards)
     {
         foreach (CardController card in selectedCards)
         {
