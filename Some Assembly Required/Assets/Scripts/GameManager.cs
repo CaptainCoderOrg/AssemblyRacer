@@ -156,7 +156,19 @@ public class GameManager : MonoBehaviour
     public void DrawMonster(System.Action onAnimationFinished)
     {
         MonsterCardData drawn = _monsterDeckManager.DrawMonster();
-        MonsterCardController card = _monsterTrack.AddMonster(drawn, onAnimationFinished);
+        MonsterCardController card = _monsterTrack.AddMonster(drawn, 
+            () => 
+            {
+                if(drawn.Ability is not null)
+                {
+                    drawn.Ability.OnDraw(this, onAnimationFinished);
+                }
+                else
+                {
+                    onAnimationFinished.Invoke();
+                }
+            }
+            );
         card.ClickController.OnClick.AddListener(() => SelectMonster(card));
     }
 
@@ -254,10 +266,21 @@ public class GameManager : MonoBehaviour
         {
             _monsterTrack.DefeatMonster(ix, () =>
             {
-                ApplyDefeatEffects(onDefeatEffects, () =>
+                Action action = () => {
+                    ApplyDefeatEffects(onDefeatEffects, () =>
+                    {
+                        AddBooBoos(woundsGained);
+                    });
+                };
+                if (monster.Card.Ability is not null)
                 {
-                    AddBooBoos(woundsGained);
-                });
+                    monster.Card.Ability.OnDefeat(monster, this, action);
+                }
+                else
+                {
+                    action.Invoke();
+                }
+                
             });
 
         });

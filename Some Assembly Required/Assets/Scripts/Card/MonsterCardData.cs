@@ -14,5 +14,7 @@ public class MonsterCardData : ScriptableObject
     public string AbilityText;
     [TextArea]
     public string FlavorText;
+    public MonsterAbility Ability;
+    
 
 }

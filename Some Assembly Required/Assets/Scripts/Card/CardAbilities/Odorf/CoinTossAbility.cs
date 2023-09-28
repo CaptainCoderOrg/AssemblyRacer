@@ -17,7 +17,8 @@ public class CoinTossAbility : CardAbility
     public override void ApplyAbility(CardController parent, List<CardController> cards, GameManager manager, CardAbilityDialog cardAbilityDialog)
     {
         List<CardController> toDiscard = new List<CardController>(cards);
-        parent.BonusDamage += 2;
+        parent.BonusDamage += 1;
+        parent.BonusMagic += 1;
         manager.RemoveCardsFromGame(cards, () =>
         {
             CardSelectorManager.Clear();

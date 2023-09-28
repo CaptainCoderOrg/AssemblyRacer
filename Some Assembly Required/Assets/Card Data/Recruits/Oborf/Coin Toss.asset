@@ -17,9 +17,10 @@ MonoBehaviour:
   Name: Coin Toss
   Attack: 1
   Gold: 0
-  Magic: 0
+  Magic: 1
   Cost: 4
   Wounds: 0
-  AbilityText: You may remove a gold card from the game. This card gains +2 attack.
+  AbilityText: You may remove a gold card from the game. This card gains +1 attack
+    and +1 spell damage.
   FlavorText: Make it rain!
   Ability: {fileID: 11400000, guid: d8a876ce175fd9a4eb679c19938b61ed, type: 2}

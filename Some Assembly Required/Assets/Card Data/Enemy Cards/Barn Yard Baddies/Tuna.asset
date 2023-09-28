@@ -17,5 +17,6 @@ MonoBehaviour:
   Name: Tuna
   HitPoints: 2
   MagicPoints: 0
-  AbilityText: 
+  AbilityText: 'On Defeat: Discard your hand'
   FlavorText: The pirate chicken of the sea.
+  Ability: {fileID: 11400000, guid: 1085022cb5450a44b98d8d709b5aac24, type: 2}

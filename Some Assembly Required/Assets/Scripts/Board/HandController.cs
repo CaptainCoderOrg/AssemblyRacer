@@ -63,6 +63,10 @@ public class HandController : MonoBehaviour
 
     public IEnumerable<CardController> DiscardHand(Transform discardPile, System.Action onAnimationComplete)
     {
+        if (_cards.Count == 0)
+        {
+            onAnimationComplete.Invoke();
+        }
         // StopAllCoroutines(); // TODO: This is kinda dangerous
         for (int ix = 0; ix < _cards.Count; ix++) // (CardController card in _cards)
         {

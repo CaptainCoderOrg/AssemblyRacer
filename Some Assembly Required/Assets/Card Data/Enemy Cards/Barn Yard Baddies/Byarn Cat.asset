@@ -19,3 +19,4 @@ MonoBehaviour:
   MagicPoints: 0
   AbilityText: 'On Defeat: Gain a Boo-Boo!'
   FlavorText: Too cute to hurt!
+  Ability: {fileID: 11400000, guid: a38951d38b18e024fa5dc8c49956fcfb, type: 2}
