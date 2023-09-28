@@ -267,6 +267,8 @@ GameObject:
   - component: {fileID: 2239140205201966983}
   - component: {fileID: 1072048849784517780}
   - component: {fileID: 6964096921293320881}
+  - component: {fileID: 997983006854628714}
+  - component: {fileID: 4907900750935618733}
   m_Layer: 0
   m_Name: Boss Card
   m_TagString: Untagged
@@ -378,6 +380,82 @@ SortingGroup:
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!60 &997983006854628714
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3520678875390648434}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 7.5, y: 10.5}
+    newSize: {x: 7.5, y: 10.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 3.75, y: -4.64}
+      - {x: 3.75, y: 4.67}
+      - {x: 3.61, y: 4.97}
+      - {x: 3.35, y: 5.16}
+      - {x: 3.1399999, y: 5.25}
+      - {x: -3.11, y: 5.25}
+      - {x: -3.23, y: 5.22}
+      - {x: -3.4499998, y: 5.0899997}
+      - {x: -3.6599998, y: 4.85}
+      - {x: -3.75, y: 4.64}
+      - {x: -3.75, y: -4.67}
+      - {x: -3.61, y: -4.97}
+      - {x: -3.46, y: -5.0899997}
+      - {x: -3.1799998, y: -5.25}
+      - {x: 3.11, y: -5.25}
+      - {x: 3.37, y: -5.18}
+      - {x: 3.6799998, y: -4.8599997}
+  m_UseDelaunayMesh: 0
+--- !u!114 &4907900750935618733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3520678875390648434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b4df9cb5cdbee84286823e3d54f7acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _growDuration: 0.25
+  _onHoverScale: 1.1
 --- !u!1 &4520162075061863514
 GameObject:
   m_ObjectHideFlags: 0

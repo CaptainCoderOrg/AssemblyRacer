@@ -19,6 +19,13 @@ public class BossCardController : MonoBehaviour
     public BossCardData Card { get; private set; }
     [field: SerializeField]
     public IconDatabase IconDatabase { get; private set; }
+    public CardClickController ClickController { get; private set; }
+
+    private void Awake()
+    {
+        ClickController = GetComponent<CardClickController>();
+        Debug.Assert(ClickController is not null);
+    }
 
     public void Render()
     {

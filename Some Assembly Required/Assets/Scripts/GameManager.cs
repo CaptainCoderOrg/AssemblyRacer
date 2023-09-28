@@ -7,7 +7,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(PlayerDeckManager), typeof(MonsterDeckManager), typeof(RecruitDeckManager))]
 public class GameManager : MonoBehaviour
 {
-
+    
     [SerializeField]
     private MonsterTrackController _monsterTrack;
     [SerializeField]
@@ -17,7 +17,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private RecruitDialogController _recruitDialog;
     [SerializeField]
+    private BossDialogController _bossDialog;
+    [SerializeField]
     private CardAbilityDialog _cardAbilityDialog;
+    [SerializeField]
+    private BossCardController _bossCard;
     [field: SerializeField]
     public MonsterCardController SelectedMonster { get; private set; }
     private int _selectedMonsturIx = -1;
@@ -27,6 +31,7 @@ public class GameManager : MonoBehaviour
     private PlayerDeckManager _playerDeckManager;
     private RecruitDeckManager _recruitDeckManager;
     private MonsterDeckManager _monsterDeckManager;
+    
     public UnityEvent<string> OnWoundsChangedString;
     public UnityEvent<int> OnWoundsChanged;
     private int _wounds = 10;
@@ -48,6 +53,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private CardController _selectedCard;
     private GameOverManager _gameOverManager;
+    private GameWonManager _gameWonManager;
 
     void Awake()
     {
@@ -55,6 +61,7 @@ public class GameManager : MonoBehaviour
         _monsterDeckManager = GetComponent<MonsterDeckManager>();
         _recruitDeckManager = GetComponent<RecruitDeckManager>();
         _gameOverManager = GetComponent<GameOverManager>();
+        _gameWonManager = GetComponent<GameWonManager>();
     }
 
     void Start()
@@ -62,8 +69,10 @@ public class GameManager : MonoBehaviour
         _monsterTrack.OnMonsterAttack.AddListener(HandleMonsterAttack);
         _monsterTrack.OnMonsterAttackFinished.AddListener(HandleMonsterAttackFinished);
         CardSelectorManager.OnCleared += RegisterAbilityCards;
+        _bossCard.ClickController.OnClick.AddListener(SelectBoss);
         
     }
+
 
     public void AddBooBoo(System.Action onAnimationFinished)
     {
@@ -214,6 +223,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    
+    private void SelectBoss()
+    {
+        Unselect();
+        _bossDialog.gameObject.SetActive(true);
+        _playerDeckManager.EnableSelectionMode(_bossDialog.OnClickCard);
+    }
+
+    public void DefeatBoss()
+    {
+        Win();
+    }
+
     public void SelectRecruit(CardController card)
     {
         if (_recruitsTrack.TryFindRecruitIx(card, out int ix))
@@ -245,6 +267,7 @@ public class GameManager : MonoBehaviour
         _playerDeckManager.DisableSelectMode();
         _cardAbilityDialog.gameObject.SetActive(false);
         _selectedCard = null;
+        _bossDialog.gameObject.SetActive(false);
         CardSelectorManager.Clear();
     }
 
@@ -396,12 +419,15 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        Unselect();
         _gameOverManager.GameOver();
     }
 
     public void Win()
     {
-        
+        Unselect();
+        _gameWonManager.Win();
+
     }
 
     
