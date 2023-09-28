@@ -20,6 +20,7 @@ MonoBehaviour:
   Magic: 0
   Cost: 3
   Wounds: 0
+  HireSound: {fileID: 8300000, guid: 3596d4b021d153640b4d789aef258aab, type: 3}
   AbilityText: Once this turn, you may remove an attack card from the game. This
     card gains +2 attack.
   FlavorText: Slice and dice!

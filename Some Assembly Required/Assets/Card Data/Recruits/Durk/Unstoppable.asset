@@ -20,6 +20,7 @@ MonoBehaviour:
   Magic: 0
   Cost: 8
   Wounds: 0
+  HireSound: {fileID: 8300000, guid: 3596d4b021d153640b4d789aef258aab, type: 3}
   AbilityText: 'On Defeat: Return this card to your hand
 
     Discard your hand:

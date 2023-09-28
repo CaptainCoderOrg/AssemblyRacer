@@ -20,6 +20,7 @@ MonoBehaviour:
   Magic: 2
   Cost: 3
   Wounds: 0
+  HireSound: {fileID: 8300000, guid: da860057ce8d25745b693c1158a4cdb3, type: 3}
   AbilityText: 'Action: Remove a spell card from the game. This card gains +2 spell
     damage.'
   FlavorText: It's shocking, I know!

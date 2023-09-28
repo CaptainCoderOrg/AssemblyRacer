@@ -10,6 +10,7 @@ public class MonsterCardData : ScriptableObject
     public string Name;
     public int HitPoints;
     public int MagicPoints;
+    public AudioClip EnterSound;
     [TextArea]
     public string AbilityText;
     [TextArea]

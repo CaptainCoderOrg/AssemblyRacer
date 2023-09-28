@@ -20,6 +20,7 @@ MonoBehaviour:
   Magic: 0
   Cost: 8
   Wounds: 0
+  HireSound: {fileID: 8300000, guid: b27db4dd58b13564b8763f6c09b65c01, type: 3}
   AbilityText: 'Discard a wound: This card gains +5 attack.'
   FlavorText: It's clobberin' time!
   Ability: {fileID: 11400000, guid: 3f95ccf4891eb7b42860ff237035a79b, type: 2}

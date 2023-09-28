@@ -20,6 +20,7 @@ MonoBehaviour:
   Magic: 1
   Cost: 4
   Wounds: 0
+  HireSound: {fileID: 8300000, guid: 080d3ce5fd2c49e47a8beaf5c333f68a, type: 3}
   AbilityText: You may remove a gold card from the game. This card gains +1 attack
     and +1 spell damage.
   FlavorText: Make it rain!

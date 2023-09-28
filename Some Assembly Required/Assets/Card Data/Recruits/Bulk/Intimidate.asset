@@ -20,6 +20,7 @@ MonoBehaviour:
   Magic: 1
   Cost: 4
   Wounds: 0
+  HireSound: {fileID: 8300000, guid: b27db4dd58b13564b8763f6c09b65c01, type: 3}
   AbilityText: 'Action: Discard a Boo-boo to draw 3 cards.
 
     On Defeat: Draw a

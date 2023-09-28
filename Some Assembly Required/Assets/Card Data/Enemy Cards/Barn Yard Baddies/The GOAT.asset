@@ -17,6 +17,7 @@ MonoBehaviour:
   Name: The G.O.A.T.
   HitPoints: 0
   MagicPoints: 4
+  EnterSound: {fileID: 8300000, guid: 3b3a4d33deed1294d8a666cc7a1f7e15, type: 3}
   AbilityText: 'On Defeat: Add a shinies to your discard pile'
   FlavorText: He's one baaaaaad goat.
   Ability: {fileID: 11400000, guid: 8695be31b1cf8bf498562f28a2df74cf, type: 2}

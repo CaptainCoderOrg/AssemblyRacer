@@ -81,6 +81,7 @@ public class RecruitsTrackController : MonoBehaviour
     public void AddRecruitToDiscard(int ix, PlayerDeckManager playerDeckManager, System.Action onAnimationComplete)
     {
         CardController card = _recruits[ix];
+        card.PlayRecruitSound();
         card.GetComponent<CardCostIcon>()?.ToHide.SetActive(false);
         StartCoroutine(SlideCardTo(card.gameObject, _discardPileTransform, _cardSlideTime, () =>
         {

@@ -20,6 +20,7 @@ MonoBehaviour:
   Magic: 0
   Cost: 3
   Wounds: 0
+  HireSound: {fileID: 8300000, guid: 080d3ce5fd2c49e47a8beaf5c333f68a, type: 3}
   AbilityText: 'Discard any number of gold cards: This card gains double the discarded
     gold.'
   FlavorText: Put your money to work for you!

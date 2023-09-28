@@ -20,5 +20,7 @@ MonoBehaviour:
   Magic: 6
   Cost: 8
   Wounds: 0
+  HireSound: {fileID: 8300000, guid: da860057ce8d25745b693c1158a4cdb3, type: 3}
   AbilityText: 
   FlavorText: Never get on a Wizards bad side.
+  Ability: {fileID: 0}

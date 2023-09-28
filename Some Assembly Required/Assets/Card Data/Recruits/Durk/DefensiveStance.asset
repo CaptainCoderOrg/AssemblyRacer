@@ -20,6 +20,7 @@ MonoBehaviour:
   Magic: 2
   Cost: 4
   Wounds: 0
+  HireSound: {fileID: 8300000, guid: 3596d4b021d153640b4d789aef258aab, type: 3}
   AbilityText: 'Discard: Draw a card'
   FlavorText: A good offense is the best defense.
   Ability: {fileID: 11400000, guid: d54e6f34e6bb85549aec583fc65462c1, type: 2}

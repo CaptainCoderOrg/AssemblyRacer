@@ -20,6 +20,7 @@ MonoBehaviour:
   Magic: 0
   Cost: 2
   Wounds: 0
+  HireSound: {fileID: 8300000, guid: 080d3ce5fd2c49e47a8beaf5c333f68a, type: 3}
   AbilityText: 'On Defeat: Add a shinies to your discard pile.'
   FlavorText: What is yours is mine
   Ability: {fileID: 11400000, guid: 7212e1c81b581924ab22f9a40c517c7e, type: 2}

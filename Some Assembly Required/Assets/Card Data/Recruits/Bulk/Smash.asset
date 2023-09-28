@@ -20,6 +20,7 @@ MonoBehaviour:
   Magic: 0
   Cost: 2
   Wounds: 0
+  HireSound: {fileID: 8300000, guid: b27db4dd58b13564b8763f6c09b65c01, type: 3}
   AbilityText: 'Action: Discard a Boo-boo. This card gains +2 attack.'
   FlavorText: Bulk  Smash!
   Ability: {fileID: 11400000, guid: 838054044b718334d9bab3fe1bf0c36c, type: 2}

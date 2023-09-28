@@ -20,6 +20,7 @@ MonoBehaviour:
   Magic: 1
   Cost: 2
   Wounds: 0
+  HireSound: {fileID: 8300000, guid: da860057ce8d25745b693c1158a4cdb3, type: 3}
   AbilityText: 
   FlavorText: A little bit of everything.
   Ability: {fileID: 0}

@@ -17,6 +17,7 @@ MonoBehaviour:
   Name: Byarn Cat
   HitPoints: 0
   MagicPoints: 0
+  EnterSound: {fileID: 8300000, guid: e86498234e820e54b87a86615dbb55a8, type: 3}
   AbilityText: 'On Defeat: Gain a Boo-Boo!'
   FlavorText: Too cute to hurt!
   Ability: {fileID: 11400000, guid: a38951d38b18e024fa5dc8c49956fcfb, type: 2}

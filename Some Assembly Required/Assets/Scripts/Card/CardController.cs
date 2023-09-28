@@ -60,11 +60,21 @@ public class CardController : MonoBehaviour
 
     public CardClickController ClickController { get; private set; }
 
+    private AudioSource _audioSource;
+
     private void Awake()
     {
         ClickController = GetComponent<CardClickController>();
         SortingGroup = GetComponent<SortingGroup>();
         _collider = GetComponent<PolygonCollider2D>();
+        _audioSource = GetComponent<AudioSource>();
+    }
+
+    public void PlayRecruitSound()
+    {
+        _audioSource.volume = VolumeController.SFXVolume;
+        _audioSource.clip = Card.HireSound;
+        _audioSource.Play();
     }
 
     public void Render()

@@ -17,6 +17,7 @@ MonoBehaviour:
   Name: Porkington
   HitPoints: 2
   MagicPoints: 2
+  EnterSound: {fileID: 8300000, guid: 882ddd077657d2b478334308d557833d, type: 3}
   AbilityText: 'On Defeat: Draw a Card'
   FlavorText: When pigs fly, you die!
   Ability: {fileID: 11400000, guid: 3813d36fc0acd1f44bc3b5caa66d1ae3, type: 2}

@@ -13,6 +13,7 @@ public class CardData : ScriptableObject
     public int Magic;
     public int Cost;
     public int Wounds;
+    public AudioClip HireSound;
     [TextArea]
     public string AbilityText;
     [TextArea]

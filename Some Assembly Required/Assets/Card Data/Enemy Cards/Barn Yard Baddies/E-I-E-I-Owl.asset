@@ -17,6 +17,7 @@ MonoBehaviour:
   Name: E-I-E-I-Owl
   HitPoints: 4
   MagicPoints: 0
+  EnterSound: {fileID: 8300000, guid: ae19cb6d8242b1249a2b9405dce368c8, type: 3}
   AbilityText: 'On Draw: Draw another Monstur'
   FlavorText: This is what happens when a radioactive farmer bites an innocent owl.
   Ability: {fileID: 11400000, guid: 41ebeab9df72eaf48b26a961a0f82614, type: 2}

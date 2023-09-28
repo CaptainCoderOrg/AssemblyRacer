@@ -20,6 +20,7 @@ MonoBehaviour:
   Magic: 2
   Cost: 3
   Wounds: 0
+  HireSound: {fileID: 8300000, guid: da860057ce8d25745b693c1158a4cdb3, type: 3}
   AbilityText: 'On Defeat: Add a Shinies card to your discard pile.'
   FlavorText: Using the power of Midas turn your enemies into gold!
   Ability: {fileID: 11400000, guid: dcd1f0b279ec23a4e9ca7015b20e53a5, type: 2}
