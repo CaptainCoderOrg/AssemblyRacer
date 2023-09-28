@@ -61,8 +61,8 @@ public class MonsterDialogController : MonoBehaviour
         int totalMagic = 0;
         foreach (CardController card in CardSelectorManager.Selected)
         {
-            totalAttack += card.Card.Attack;
-            totalMagic += card.Card.Magic;
+            totalAttack += card.Card.Attack + card.BonusDamage;
+            totalMagic += card.Card.Magic + card.BonusMagic;
         }
 
         int attackRemaining = Mathf.Max(0, Card.HitPoints - totalAttack);
