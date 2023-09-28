@@ -18,7 +18,7 @@ MonoBehaviour:
   Attack: 1
   Gold: 1
   Magic: 1
-  Cost: 3
+  Cost: 2
   Wounds: 0
   AbilityText: 
   FlavorText: A little bit of everything.

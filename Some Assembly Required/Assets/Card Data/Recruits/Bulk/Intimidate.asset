@@ -17,12 +17,12 @@ MonoBehaviour:
   Name: Intimidate
   Attack: 0
   Gold: 0
-  Magic: 0
+  Magic: 1
   Cost: 4
   Wounds: 0
-  AbilityText: 'Action: Discard Intimidate and a Boo-boo to draw 3 cards.
+  AbilityText: 'Action: Discard a Boo-boo to draw 3 cards.
 
-    On
-    Defeat: Draw a card'
+    On Defeat: Draw a
+    card'
   FlavorText: '**Cracks Knuckles**'
   Ability: {fileID: 11400000, guid: 67c8d7951ee9efd458afc0e78dfa4138, type: 2}

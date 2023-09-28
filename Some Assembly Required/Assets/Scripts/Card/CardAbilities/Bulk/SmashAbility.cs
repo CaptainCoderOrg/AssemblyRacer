@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Ability - Intimidate", menuName = "Assembly/Card Abilities/Bulk/Intimidate Card Ability")]
-public class IntimidateCardAbility : CardAbility
+[CreateAssetMenu(fileName = "Ability - Smash", menuName = "Assembly/Card Abilities/Bulk/Smash")]
+public class SmashAbility : CardAbility
 {
 
     public override bool CheckRequirement(CardController parent, List<CardController> selectedCards)
@@ -31,17 +31,14 @@ public class IntimidateCardAbility : CardAbility
             }
         }
 
-        manager.Unselect();
+        parent.BonusDamage += 2;
         manager.DiscardCards(toDiscard, () =>
         {
-            manager.DrawCards(3, () => { });
+            CardSelectorManager.Clear();
+            manager.SelectHandCard(parent);
         });
 
     }
 
-    public override void OnDefeat(CardController card, MonsterCardController enemy, GameManager manager, Action onAnimationCompelte)
-    {
-        manager.DrawCards(1, () => { });
-    }
 
 }

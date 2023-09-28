@@ -9176,6 +9176,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ead576e9177be254daa7247337af429e, type: 2}
   - {fileID: 11400000, guid: b71f4c0899735914499734e6493d90e8, type: 2}
   - {fileID: 11400000, guid: c2ef6d35b85780649b6b94a15153a531, type: 2}
+  - {fileID: 11400000, guid: 40e23b9d2f271f646ab980f8be959cb4, type: 2}
   <RecruitDeck>k__BackingField: []
 --- !u!1 &1189913465
 GameObject:

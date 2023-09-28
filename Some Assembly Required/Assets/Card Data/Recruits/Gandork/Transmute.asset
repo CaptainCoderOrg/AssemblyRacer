@@ -17,8 +17,8 @@ MonoBehaviour:
   Name: Transmute
   Attack: 0
   Gold: 0
-  Magic: 1
-  Cost: 2
+  Magic: 2
+  Cost: 3
   Wounds: 0
   AbilityText: 'On Defeat: Add a Shinies card to your discard pile.'
   FlavorText: Using the power of Midas turn your enemies into gold!

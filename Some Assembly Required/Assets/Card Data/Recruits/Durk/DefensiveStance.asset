@@ -15,9 +15,9 @@ MonoBehaviour:
   Art: {fileID: 21300000, guid: f8fdbae4787aa0e4091f3751ffbac70b, type: 3}
   UIArt: {fileID: 21300000, guid: 3f3a2b803c4a89d42a031c7ca95345f2, type: 3}
   Name: Defensive Stance
-  Attack: 2
+  Attack: 0
   Gold: 0
-  Magic: 0
+  Magic: 2
   Cost: 4
   Wounds: 0
   AbilityText: 'Discard: Draw a card'
