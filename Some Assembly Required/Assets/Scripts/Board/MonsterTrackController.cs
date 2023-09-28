@@ -48,9 +48,11 @@ public class MonsterTrackController : MonoBehaviour
     public MonsterCardController AddMonster(MonsterCardData toAdd, System.Action onAnimationFinished)
     {
         MonsterCardController newMonster = Instantiate(_template, _monstersContainer);
+        
         newMonster.Card = toAdd;
         newMonster.name = toAdd.Name;
         newMonster.gameObject.SetActive(true);
+        newMonster.PlayEnterSound();
         float rotation = Random.Range(-7f, 7f);
         newMonster.transform.rotation = Quaternion.Euler(0, 0, rotation);
         PlaceMonster(newMonster,  0, onAnimationFinished);

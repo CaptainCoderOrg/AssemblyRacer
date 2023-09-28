@@ -579,6 +579,7 @@ MonoBehaviour:
   _art: {fileID: 2851421207039880006}
   _card: {fileID: 11400000, guid: ae23418a1d25bf74ba170901f7a92080, type: 2}
   <IconDatabase>k__BackingField: {fileID: 11400000, guid: ffedaf308eacd7d40b2ceb5f6211dc95, type: 2}
+  CardAudioDatabase: {fileID: 11400000, guid: ac4d0b08e3115984ba15747532a0c98e, type: 2}
   ForceUpdate: 0
 --- !u!210 &6608199169125503349
 SortingGroup:

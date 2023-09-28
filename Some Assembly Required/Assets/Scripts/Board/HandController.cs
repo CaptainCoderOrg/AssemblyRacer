@@ -106,6 +106,7 @@ public class HandController : MonoBehaviour
         newCard.Card = data;
         newCard.name = data.Name;
         newCard.gameObject.SetActive(true);
+        newCard.PlayDrawSound();
         _cards.Add(newCard);
         PlaceAllCards(onAnimationComplete);
         return newCard;
@@ -153,6 +154,7 @@ public class HandController : MonoBehaviour
     {
         if (!card.IsDestroyed())
         {
+            card.PlayShuffleSound();
             float startTime = Time.time;
             float duration = AnimationDuration;
             float endTime = startTime + duration;

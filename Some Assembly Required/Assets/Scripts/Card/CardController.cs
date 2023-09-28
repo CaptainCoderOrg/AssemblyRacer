@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -61,6 +62,7 @@ public class CardController : MonoBehaviour
     public CardClickController ClickController { get; private set; }
 
     private AudioSource _audioSource;
+    public CardAudioDatabase CardAudioDatabase;
 
     private void Awake()
     {
@@ -70,12 +72,7 @@ public class CardController : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlayRecruitSound()
-    {
-        _audioSource.volume = VolumeController.SFXVolume;
-        _audioSource.clip = Card.HireSound;
-        _audioSource.Play();
-    }
+    
 
     public void Render()
     {
@@ -124,15 +121,19 @@ public class CardController : MonoBehaviour
             }
         }
     }
+    internal void PlayShuffleSound() => PlaySound(CardAudioDatabase.Shuffle);
+    internal void PlayClickSound() => PlaySound(CardAudioDatabase.Click);
+    internal void PlayDrawSound() => PlaySound(CardAudioDatabase.Draw);
+    public void PlayRecruitSound() => PlaySound(Card.HireSound);
     
 
-    #if UNITY_EDITOR
-    public bool ForceUpdate;
-    public void OnValidate()
+
+    private void PlaySound(AudioClip clip)
     {
-        ForceUpdate = false;
-        if (Card == null) { return; }
-        Render();
+        _audioSource.volume = VolumeController.SFXVolume;
+        _audioSource.clip = clip;
+        _audioSource.Play();
     }
-    #endif
+
+    
 }

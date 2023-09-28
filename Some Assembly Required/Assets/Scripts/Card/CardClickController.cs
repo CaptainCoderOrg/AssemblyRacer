@@ -14,6 +14,8 @@ public class CardClickController : MonoBehaviour
         if (EventSystem.current.IsPointerOverGameObject()) { return; }
         
         OnClick.Invoke();
+        GetComponent<CardController>()?.PlayClickSound();
+        GetComponent<MonsterCardController>()?.PlayClickSound();
     }
 
 }

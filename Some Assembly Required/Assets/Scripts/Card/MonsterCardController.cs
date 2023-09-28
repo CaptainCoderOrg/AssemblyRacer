@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,6 +9,7 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(CardHoverController), typeof(CardClickController), typeof(SortingGroup))]
 public class MonsterCardController : MonoBehaviour
 {
+    private AudioSource _audioSource;
     private PolygonCollider2D _collider;
     [SerializeField]
     private TextMeshPro _attackDamage;
@@ -43,12 +45,24 @@ public class MonsterCardController : MonoBehaviour
     
     [field: SerializeField]
     public IconDatabase IconDatabase { get; private set; }
+    public CardAudioDatabase CardAudioDatabase;
 
     private void Awake()
     {
         ClickController = GetComponent<CardClickController>();
         SortingGroup = GetComponent<SortingGroup>();
         _collider = GetComponent<PolygonCollider2D>();
+        _audioSource = GetComponent<AudioSource>();
+    }
+
+    public void PlayEnterSound() => PlaySound(Card.EnterSound);
+    internal void PlayClickSound() => PlaySound(CardAudioDatabase.Click);
+
+    private void PlaySound(AudioClip clip)
+    {
+        _audioSource.volume = VolumeController.SFXVolume;
+        _audioSource.clip = clip;
+        _audioSource.Play();
     }
 
     public void Render()
@@ -59,14 +73,4 @@ public class MonsterCardController : MonoBehaviour
         _attackDamage.text = Card.HitPoints.ToString();
         _magicDamage.text = Card.MagicPoints.ToString();
     }
-
-    #if UNITY_EDITOR
-    public bool ForceUpdate;
-    public void OnValidate()
-    {
-        ForceUpdate = false;
-        if (Card == null) { return; }
-        Render();
-    }
-    #endif
 }
