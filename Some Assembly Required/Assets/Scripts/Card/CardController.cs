@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -73,7 +74,7 @@ public class CardController : MonoBehaviour
     }
 
     
-
+    [Button("Force Render")]
     public void Render()
     {
         Debug.Assert(Card != null);

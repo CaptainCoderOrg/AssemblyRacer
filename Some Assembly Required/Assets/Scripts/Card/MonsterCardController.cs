@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -65,6 +66,7 @@ public class MonsterCardController : MonoBehaviour
         _audioSource.Play();
     }
 
+    [Button("Force Render")]
     public void Render()
     {
         Debug.Assert(Card != null);

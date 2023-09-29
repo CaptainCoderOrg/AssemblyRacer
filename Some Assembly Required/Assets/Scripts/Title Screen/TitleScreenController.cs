@@ -11,6 +11,11 @@ public class TitleScreenController : MonoBehaviour
         StartCoroutine(LoadYourAsyncScene("Game"));
     }
 
+    public void Tutorial()
+    {
+        StartCoroutine(LoadYourAsyncScene("Tutorial"));
+    }
+
     public static IEnumerator LoadYourAsyncScene(string sceneName)
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
