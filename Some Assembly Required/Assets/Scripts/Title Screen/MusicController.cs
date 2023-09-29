@@ -40,5 +40,9 @@ public class MusicController : MonoBehaviour
 
     public void UpdateSoundVolume(float volume) => VolumeController.SFXVolume = volume;
 
+    public void ToTitleScreen()
+    {
+        StartCoroutine(TitleScreenController.LoadYourAsyncScene("TitleSceen"));
+    }
 
 }
