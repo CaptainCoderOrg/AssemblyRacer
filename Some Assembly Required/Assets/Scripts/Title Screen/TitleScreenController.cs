@@ -7,6 +7,15 @@ public class TitleScreenController : MonoBehaviour
 {
     public DifficultyData DifficultyData;
     public BossCardData[] Difficulties;
+    public AudioClip TitleScreenMusic;
+
+    public void Start()
+    {
+        if (!MusicController.Instance) { return; }
+        if (MusicController.Instance.AudioSource.clip == TitleScreenMusic) { return; }
+        MusicController.Instance.AudioSource.clip = TitleScreenMusic;
+        MusicController.Instance.AudioSource.Play();
+    }
     
     public void Play(int difficulty)
     {

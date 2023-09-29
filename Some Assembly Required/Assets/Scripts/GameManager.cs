@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
     private CardController _selectedCard;
     private GameOverManager _gameOverManager;
     private GameWonManager _gameWonManager;
+    public AudioClip GameMusic;
 
     void Awake()
     {
@@ -75,7 +76,16 @@ public class GameManager : MonoBehaviour
         _bossCard.Card = _difficultyConfig.BossSetting;
         _bossCard.Render();
         _bossDialog.Card = _difficultyConfig.BossSetting;
+        StartMusic();
         
+    }
+
+    public void StartMusic()
+    {
+        if (!MusicController.Instance) { return; }
+        if (MusicController.Instance.AudioSource.clip == GameMusic) { return; }
+        MusicController.Instance.AudioSource.clip = GameMusic;
+        MusicController.Instance.AudioSource.Play();
     }
 
 

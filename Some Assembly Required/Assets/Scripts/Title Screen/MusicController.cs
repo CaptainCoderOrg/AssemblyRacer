@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MusicController : MonoBehaviour
 {
     public static bool Loaded = false;
+    public static MusicController Instance;
     public GameObject Dialog;
     public Slider MusicSlider;
     public Slider SoundSlider;
@@ -19,6 +20,7 @@ public class MusicController : MonoBehaviour
             return;
         }
         Loaded = true;
+        Instance = this;
         MusicSlider.value = VolumeController.MusicVolume;
         AudioSource.volume = MusicSlider.value;
         SoundSlider.value = VolumeController.SFXVolume;
@@ -26,6 +28,8 @@ public class MusicController : MonoBehaviour
         SoundSlider.onValueChanged.AddListener(UpdateSoundVolume);
         DontDestroyOnLoad(this.gameObject);
     }
+
+    
     
     public void Toggle()
     {

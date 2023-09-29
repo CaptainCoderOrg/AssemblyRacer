@@ -931,6 +931,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 96d5b632367abde458ead67128735568, type: 2}
   - {fileID: 11400000, guid: 62aaf34da4bcf0744ba135cac6384447, type: 2}
   - {fileID: 11400000, guid: 8be88effa5fa85948b0020ef99598022, type: 2}
+  TitleScreenMusic: {fileID: 8300000, guid: fe3790156d166714698d67227b289e2a, type: 3}
 --- !u!4 &387205124
 Transform:
   m_ObjectHideFlags: 0
