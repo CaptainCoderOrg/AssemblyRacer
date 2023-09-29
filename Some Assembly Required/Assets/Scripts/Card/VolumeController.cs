@@ -9,7 +9,7 @@ public static class VolumeController
         {
             if (_sfxVolume == null)
             {
-                _sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 0.5f);
+                _sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 0.25f);
             }
             return _sfxVolume.Value;
         }
@@ -27,7 +27,7 @@ public static class VolumeController
         {
             if (_musicVolume == null)
             {
-                _musicVolume = PlayerPrefs.GetFloat("musicVolume", 0.5f);
+                _musicVolume = PlayerPrefs.GetFloat("musicVolume", 0.25f);
             }
             return _musicVolume.Value;
         }
