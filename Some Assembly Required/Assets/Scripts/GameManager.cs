@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
         _bossCard.ClickController.OnClick.AddListener(SelectBoss);
         _bossCard.Card = _difficultyConfig.BossSetting;
         _bossCard.Render();
+        _bossDialog.Card = _difficultyConfig.BossSetting;
         
     }
 

@@ -11,7 +11,9 @@ public class TitleScreenController : MonoBehaviour
     public void Play(int difficulty)
     {
         DifficultyData.BossSetting = Difficulties[difficulty];
-        StartCoroutine(LoadYourAsyncScene("Game"));
+        // StartCoroutine(LoadYourAsyncScene("Game"));
+        // AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        SceneManager.LoadScene("Game");
     }
 
     public void Tutorial()

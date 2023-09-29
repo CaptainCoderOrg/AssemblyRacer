@@ -39,7 +39,7 @@ public class MonsterDeckManager : MonoBehaviour
     public bool TryDrawMonster(out MonsterCardData drawn)
     {
         drawn = null;
-        if (MonsterDeck.Count == 0) { return false; }
+        if (MonsterDeck.Count == 0) { InitializeMonsterDeck(); }
         drawn = MonsterDeck[MonsterDeck.Count - 1];
         MonsterDeck.RemoveAt(MonsterDeck.Count - 1);
         OnDeckSizeChange.Invoke(MonsterDeck.Count);

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -52,7 +53,8 @@ public class CardController : MonoBehaviour
         set
         {
             _selected = value;
-            _selectedObject.SetActive(value);
+            if (_selectedObject.IsDestroyed()) { return; }
+            _selectedObject?.SetActive(value);
         }
     }
 
