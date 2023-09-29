@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b358d8efc1ba534fac65b10a984e772, type: 3}
-  m_Name: Legen Dairy
+  m_Name: Not EZ Legen Dairy 3
   m_EditorClassIdentifier: 
   Art: {fileID: 21300000, guid: b21324ad436573e459b4d091d72a9658, type: 3}
   UIArt: {fileID: 21300000, guid: 17dc42e24dc455f4ca76b76060940c41, type: 3}
   Name: Legen Dairy
-  HitPoints: 8
-  MagicPoints: 8
+  HitPoints: 6
+  MagicPoints: 6
   AbilityText: 
   FlavorText: She's the bovine boss!

@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private CardAbilityDialog _cardAbilityDialog;
     [SerializeField]
+    private DifficultyData _difficultyConfig;
+    [SerializeField]
     private BossCardController _bossCard;
     [field: SerializeField]
     public MonsterCardController SelectedMonster { get; private set; }
@@ -70,6 +72,8 @@ public class GameManager : MonoBehaviour
         _monsterTrack.OnMonsterAttackFinished.AddListener(HandleMonsterAttackFinished);
         CardSelectorManager.OnCleared += RegisterAbilityCards;
         _bossCard.ClickController.OnClick.AddListener(SelectBoss);
+        _bossCard.Card = _difficultyConfig.BossSetting;
+        _bossCard.Render();
         
     }
 
@@ -428,6 +432,11 @@ public class GameManager : MonoBehaviour
         Unselect();
         _gameWonManager.Win();
 
+    }
+
+    public void TitleScreen()
+    {
+        StartCoroutine(TitleScreenController.LoadYourAsyncScene("Title Sceen"));
     }
 
     

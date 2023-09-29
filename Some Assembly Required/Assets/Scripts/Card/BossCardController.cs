@@ -16,7 +16,7 @@ public class BossCardController : MonoBehaviour
     
 
     [field: SerializeField]
-    public BossCardData Card { get; private set; }
+    public BossCardData Card { get; set; }
     [field: SerializeField]
     public IconDatabase IconDatabase { get; private set; }
     public CardClickController ClickController { get; private set; }

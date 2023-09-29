@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class TitleScreenController : MonoBehaviour
 {
+    public DifficultyData DifficultyData;
+    public BossCardData[] Difficulties;
     
-    public void Play()
+    public void Play(int difficulty)
     {
+        DifficultyData.BossSetting = Difficulties[difficulty];
         StartCoroutine(LoadYourAsyncScene("Game"));
     }
 
